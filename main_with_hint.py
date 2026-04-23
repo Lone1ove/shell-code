@@ -1,4 +1,4 @@
-"""CHYing Agent 提示模式启动器 - 2小时后带提示解题
+﻿"""Shell Agent 提示模式启动器 - 2小时后带提示解题
 
 使用场景：
 - 与 main.py 同时启动，形成双重保障
@@ -21,17 +21,17 @@ from langfuse import get_client
 from langfuse.langchain import CallbackHandler
 from langchain_openai import ChatOpenAI
 
-from chying_agent.core.singleton import get_config_manager
-from chying_agent.task_manager import ChallengeTaskManager
-from chying_agent.retry_strategy import RetryStrategy
-from chying_agent.task_launcher import start_challenge_task
-from chying_agent.scheduler import (
+from shell_agent.core.singleton import get_config_manager
+from shell_agent.task_manager import ChallengeTaskManager
+from shell_agent.retry_strategy import RetryStrategy
+from shell_agent.task_launcher import start_challenge_task
+from shell_agent.scheduler import (
     status_monitor,
     check_and_start_pending_challenges,
     periodic_fetch_challenges
 )
-from chying_agent.common import log_system_event
-from chying_agent.utils.util import fetch_new_challenges
+from shell_agent.common import log_system_event
+from shell_agent.utils.util import fetch_new_challenges
 
 from dotenv import load_dotenv
 
@@ -170,7 +170,7 @@ async def main():
     
     # ==================== 0. 启动提示 ====================
     print("\n" + "="*80)
-    print("🕐 CHYing Agent 提示模式启动器")
+    print("🕐 Shell Agent 提示模式启动器")
     print("="*80)
     print(f"⏰ 延迟时间: {HINT_DELAY_HOURS} 小时")
     print(f"🎯 目标: 2小时后为未解决题目获取提示，重新解题")
@@ -327,7 +327,7 @@ async def main():
     
     # ==================== 5. 初始化 API 客户端 ====================
     try:
-        from chying_agent.tools.competition_api_tools import CompetitionAPIClient
+        from shell_agent.tools.competition_api_tools import CompetitionAPIClient
         api_client = CompetitionAPIClient()
         log_system_event("[✓] API 客户端初始化完成")
     except Exception as e:
@@ -749,3 +749,5 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"\n❌ 提示模式异常退出: {str(e)}")
         raise
+
+

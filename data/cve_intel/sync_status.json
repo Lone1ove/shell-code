@@ -1,0 +1,17 @@
+{
+  "path": "G:\\竞赛\\外包创新大赛\\yhy\\shell-agent\\data\\cve_intel\\cve_intel.json",
+  "total_records": 757,
+  "fetched_records": 366,
+  "source_stats": {
+    "nvd": 300,
+    "cveproject": 66,
+    "github_poc": 0,
+    "benchmark_seed": 39,
+    "mainstream_seed": 66,
+    "vulhub_seed": 383
+  },
+  "source_errors": {
+    "github_poc": "ConnectionError: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))"
+  },
+  "updated_at": "2026-04-06T22:25:11"
+}

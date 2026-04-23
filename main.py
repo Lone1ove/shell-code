@@ -1,49 +1,79 @@
-"""CHYing Agent 主程序 - 支持多种运行模式
+﻿"""Shell Agent main entrypoint (pentest mode).
 
-运行模式：
-1. 单目标模式 (-t): 直接指定目标 URL 进行渗透测试
-   示例: python main.py -t http://192.168.1.100:8080
+Mode:
+1. Single target mode (-t): run vulnerability detection and verification against one target.
+   Example: python main.py -t http://192.168.1.100:8080
 
-2. 比赛模式 (-api): 通过 API 获取题目，持续运行
-   示例: python main.py -api
-
-比赛模式架构：
-- 持续运行，不自动退出
-- 每 10 分钟定时拉取新题目
-- 为每道题创建独立的 Agent 实例（异步并发）
-- 动态管理解题任务队列（新题自动加入，完成自动清理）
-- ⭐ 失败题目自动重试（角色互换 + 历史记录传承）
-- ⭐ 任务完成后动态填充槽位
-- 实时汇总得分和进度
-
-模块化设计：
-- task_manager.py: 任务生命周期管理
-- retry_strategy.py: 重试策略（角色互换）
-- challenge_solver.py: 单题解题逻辑
-- task_launcher.py: 任务启动器
-- scheduler.py: 定时任务和监控
-- utils/utils.py: 工具函数
+Modules:
+- task_manager.py: task lifecycle handling
+- retry_strategy.py: retry strategy with fixed main/advisor roles
+- challenge_solver.py: single-target solve workflow
 """
 import argparse
 import asyncio
 import os
 import logging
+import json
+from pathlib import Path
 from urllib.parse import urlparse
+from dotenv import load_dotenv
 from langfuse import get_client
 from langfuse.langchain import CallbackHandler
 
-from chying_agent.core.singleton import get_config_manager
-from chying_agent.task_manager import ChallengeTaskManager
-from chying_agent.retry_strategy import RetryStrategy
-from chying_agent.common import log_system_event
+from shell_agent.core.singleton import get_config_manager
+from shell_agent.task_manager import ChallengeTaskManager
+from shell_agent.retry_strategy import RetryStrategy
+from shell_agent.common import log_system_event
+from shell_agent.config import validate_runtime_environment
+from shell_agent.utils.util import is_authentication_error
+from shell_agent.working_memory import clear_working_memory
+
+
+# 在模块级常量读取前加载 .env，避免启动时吃默认值
+load_dotenv(dotenv_path=Path(__file__).resolve().parent / ".env")
 
 
 # ==================== 并发控制 ====================
-MAX_CONCURRENT_TASKS = int(os.getenv("MAX_CONCURRENT_TASKS", "8"))
+MAX_CONCURRENT_TASKS = max(1, min(int(os.getenv("MAX_CONCURRENT_TASKS", "5")), 5))
 MAX_RETRIES = int(os.getenv("MAX_RETRIES", "4"))  # 4 次重试 = 共 5 次机会（首次 + 4 次重试）
 
 
-def parse_target_url(target: str) -> dict:
+def _has_real_env_value(name: str) -> bool:
+    value = os.getenv(name, "").strip().lower()
+    if not value:
+        return False
+    if "xxx" in value or "your" in value or value in {"changeme", "replace_me"}:
+        return False
+    return True
+
+
+def _benchmark_priors_enabled() -> bool:
+    return os.getenv("ENABLE_BENCHMARK_PRIORS", "false").strip().lower() == "true"
+
+
+def _langfuse_enabled() -> bool:
+    return os.getenv("LANGFUSE_ENABLED", "false").strip().lower() == "true"
+
+
+def _load_benchmark_profile(target_id: str, benchmark_path: str) -> dict:
+    path = Path(benchmark_path)
+    if not path.exists():
+        raise ValueError(f"Benchmark file not found: {benchmark_path}")
+    data = json.loads(path.read_text(encoding="utf-8-sig"))
+    for item in data.get("targets", []):
+        if (item.get("id") or "").strip() == target_id:
+            return item
+    raise ValueError(f"Target id not found in benchmark: {target_id}")
+
+
+def _resolve_execution_host(host: str) -> str:
+    if host in {"127.0.0.1", "localhost", "::1"}:
+        mapped_host = os.getenv("LOCAL_TARGET_HOST", "host.docker.internal").strip()
+        return mapped_host or "host.docker.internal"
+    return host
+
+
+def parse_target_url(target: str, target_id: str = "", benchmark_path: str = "") -> dict:
     """
     解析目标 URL，构造虚拟 challenge 对象
 
@@ -63,10 +93,35 @@ def parse_target_url(target: str) -> dict:
     parsed = urlparse(target)
     host = parsed.hostname or "127.0.0.1"
     port = parsed.port or (443 if parsed.scheme == 'https' else 80)
+    execution_host = _resolve_execution_host(host)
+    path = parsed.path or ""
+    query = f"?{parsed.query}" if parsed.query else ""
+    execution_target_url = f"{parsed.scheme}://{execution_host}:{port}{path}{query}"
+
+    benchmark_profile = None
+    expected_cves = []
+    expected_family = ""
+    challenge_code = f"manual_{host}_{port}"
+    hint_prefix = ""
+    if target_id:
+        default_benchmark = Path(__file__).resolve().parent / "benchmarks" / "known_cve_targets.json"
+        profile = _load_benchmark_profile(target_id, benchmark_path or str(default_benchmark))
+        benchmark_profile = profile
+        expected_cves = [x.upper() for x in (profile.get("expected_cves") or []) if x]
+        expected_family = (profile.get("family") or "").strip()
+        challenge_code = target_id
+        if _benchmark_priors_enabled():
+            hint_prefix = (
+                f"[ARENA_TARGET]\n"
+                f"- target_id: {target_id}\n"
+                f"- platform: {profile.get('platform', 'unknown')}\n"
+                f"- expected_cves: {', '.join(expected_cves) if expected_cves else 'N/A'}\n"
+                f"- expected_family: {expected_family or 'N/A'}\n"
+            )
 
     # 构造虚拟 challenge
     challenge = {
-        "challenge_code": f"manual_{host}_{port}",
+        "challenge_code": challenge_code,
         "difficulty": "unknown",
         "points": 0,
         "hint_viewed": False,
@@ -77,13 +132,25 @@ def parse_target_url(target: str) -> dict:
         },
         # 标记为手动模式，跳过 API 调用
         "_manual_mode": True,
-        "_target_url": target
+        "_target_url": target,
+        "_execution_target_url": execution_target_url,
+        "_execution_host": execution_host,
+        "_benchmark_target_id": target_id or None,
+        "_benchmark_profile": benchmark_profile or {},
+        "_expected_cves": expected_cves,
+        "_expected_family": expected_family,
+        "hint_content": hint_prefix or "",
     }
 
     return challenge
 
 
-async def run_single_target(target: str, max_retries: int = 0):
+async def run_single_target(
+    target: str,
+    max_retries: int = 0,
+    target_id: str = "",
+    benchmark_path: str = "",
+):
     """
     单目标模式 - 直接对指定目标进行渗透测试
 
@@ -91,12 +158,14 @@ async def run_single_target(target: str, max_retries: int = 0):
         target: 目标 URL (如 http://192.168.1.100:8080)
         max_retries: 最大重试次数 (默认 0，不重试)
     """
-    from chying_agent.challenge_solver import solve_single_challenge
+    from shell_agent.challenge_solver import solve_single_challenge
 
     # ==================== 0. 配置验证 ====================
     try:
         config_manager = get_config_manager()
         config = config_manager.config
+        runtime_summary = validate_runtime_environment(config)
+        log_system_event("[配置] 运行时配置检查通过", runtime_summary)
     except Exception as e:
         log_system_event(
             f"❌ 配置加载失败: {str(e)}\n"
@@ -106,11 +175,20 @@ async def run_single_target(target: str, max_retries: int = 0):
         raise
 
     # ==================== 1. 解析目标 ====================
-    challenge = parse_target_url(target)
+    challenge = parse_target_url(target, target_id=target_id, benchmark_path=benchmark_path)
+    if challenge.get("_execution_target_url") != challenge.get("_target_url"):
+        log_system_event(
+            "[目标映射] 检测到本地环回地址，执行层将自动改用容器可访问地址",
+            {
+                "display_target": challenge.get("_target_url"),
+                "execution_target": challenge.get("_execution_target_url"),
+                "execution_host": challenge.get("_execution_host"),
+            },
+        )
 
     log_system_event(
         "=" * 80 + "\n" +
-        "🎯 CHYing Agent 单目标模式启动\n" +
+        "🎯 Shell Agent 单目标模式启动\n" +
         "=" * 80
     )
     log_system_event(
@@ -126,17 +204,26 @@ async def run_single_target(target: str, max_retries: int = 0):
     # ==================== 2. 初始化 Langfuse ====================
     challenge_code = challenge["challenge_code"]
     target_url = challenge["_target_url"]
-    try:
-        get_client()  # 验证连接
-        # Langfuse 3.x: update_trace=True 让 trace 使用 chain 的 name/input/output
-        langfuse_handler = CallbackHandler(update_trace=True)
-        log_system_event("[✓] Langfuse 初始化完成")
-    except Exception as e:
+    langfuse_handler = None
+    if _langfuse_enabled() and _has_real_env_value("LANGFUSE_SECRET_KEY") and _has_real_env_value("LANGFUSE_PUBLIC_KEY"):
+        try:
+            get_client()  # 验证连接
+            # Langfuse 3.x: update_trace=True 让 trace 使用 chain 的 name/input/output
+            try:
+                langfuse_handler = CallbackHandler(update_trace=True)
+            except TypeError:
+                langfuse_handler = CallbackHandler()
+            log_system_event("[✓] Langfuse 初始化完成")
+        except Exception as e:
+            log_system_event(
+                f"⚠️ Langfuse 初始化失败，将继续运行: {str(e)}",
+                level=logging.WARNING
+            )
+    else:
         log_system_event(
-            f"⚠️ Langfuse 初始化失败，将继续运行: {str(e)}",
-            level=logging.WARNING
+            "[Langfuse] 已禁用或未配置有效 key，已跳过。",
+            level=logging.INFO
         )
-        langfuse_handler = None
 
     # Langfuse 元数据（通过 RunnableConfig 传递）
     langfuse_metadata = {
@@ -183,7 +270,7 @@ async def run_single_target(target: str, max_retries: int = 0):
         while attempt <= max_retries:
             if attempt > 0:
                 log_system_event(f"\n[重试] 第 {attempt}/{max_retries} 次重试...")
-                # 角色互换
+                # 固定双智能体角色，仅复用同一主模型/顾问模型组合
                 main_llm, advisor_llm, strategy_desc = retry_strategy.get_llm_pair(attempt)
                 log_system_event(f"[✓] LLM 策略: {strategy_desc}")
 
@@ -205,6 +292,13 @@ async def run_single_target(target: str, max_retries: int = 0):
             if result.get("success"):
                 break
 
+            if is_authentication_error(result.get("error", "")):
+                log_system_event(
+                    "[鉴权失败] 检测到不可恢复的 401/鉴权错误，停止后续重试。请检查 API Key 是否有效。",
+                    level=logging.ERROR
+                )
+                break
+
             # 记录本次尝试历史
             attempt_history.append({
                 "attempt": attempt + 1,
@@ -217,21 +311,41 @@ async def run_single_target(target: str, max_retries: int = 0):
         # ==================== 7. 输出结果 ====================
         log_system_event("\n" + "="*80)
         if result and result.get("success"):
+            findings = result.get("findings", []) if result else []
+            metrics = result.get("detection_metrics", {}) if result else {}
             log_system_event(
-                f"🎉 渗透测试成功！",
+                f"🎉 检测任务成功！",
                 {
-                    "FLAG": result.get("flag", "N/A"),
+                    "漏洞检测": "已确认漏洞" if result.get("vulnerability_detected") else "未确认",
+                    "漏洞数量": len(findings),
+                    "Confirmed": metrics.get("confirmed_count", 0),
+                    "Suspected": metrics.get("suspected_count", 0),
+                    "误报率(FPR)": metrics.get("false_positive_rate", 0.0),
+                    "CVE族分布": metrics.get("cve_family_distribution", {}),
+                    "漏洞详情": findings[:5] if findings else "N/A",
+                    "FLAG": result.get("flag", "N/A") if result.get("flag") else "未发现",
+                    "报告(Markdown)": result.get("report_markdown", "N/A"),
+                    "报告(Word)": result.get("report_docx", "N/A"),
                     "尝试次数": result.get("attempts", 0),
-                    "重试次数": attempt
+                    "重试次数": attempt,
+                    "目标模式": result.get("objective_mode", "hybrid")
                 }
             )
         else:
+            findings = result.get("findings", []) if result else []
+            metrics = result.get("detection_metrics", {}) if result else {}
             log_system_event(
-                f"❌ 渗透测试未成功",
+                f"❌ 检测任务未成功",
                 {
                     "尝试次数": result.get("attempts", 0) if result else 0,
                     "重试次数": attempt,
-                    "原因": "未找到 FLAG 或达到最大尝试次数"
+                    "漏洞数量": len(findings),
+                    "Confirmed": metrics.get("confirmed_count", 0),
+                    "Suspected": metrics.get("suspected_count", 0),
+                    "误报率(FPR)": metrics.get("false_positive_rate", 0.0),
+                    "报告(Markdown)": result.get("report_markdown", "N/A") if result else "N/A",
+                    "报告(Word)": result.get("report_docx", "N/A") if result else "N/A",
+                    "原因": "未确认漏洞证据或达到最大尝试次数"
                 }
             )
         log_system_event("="*80)
@@ -247,13 +361,77 @@ async def run_single_target(target: str, max_retries: int = 0):
             level=logging.ERROR
         )
         raise
+    finally:
+        log_system_event("[工作记忆] 清理单目标中间过程文件", {"challenge_code": challenge_code})
+        clear_working_memory(challenge_code)
+
+
+async def run_multi_targets(
+    targets: list[str],
+    max_retries: int = 0,
+    target_id: str = "",
+    benchmark_path: str = "",
+):
+    """
+    多目标并发模式：
+    - 通过 `-t url1 url2 ...` 传入多个目标
+    - 并发上限受 MAX_CONCURRENT_TASKS 控制，且硬上限为 5
+    """
+    clean_targets = [str(t).strip() for t in (targets or []) if str(t).strip()]
+    if not clean_targets:
+        raise ValueError("未提供有效目标 URL。")
+
+    if len(clean_targets) > 1 and target_id:
+        log_system_event(
+            "[多目标] 检测到 --target-id 与多目标同时使用，已自动忽略 --target-id/--benchmark（仅单目标支持）。",
+            level=logging.WARNING,
+        )
+        target_id = ""
+        benchmark_path = ""
+
+    concurrency = MAX_CONCURRENT_TASKS
+    sem = asyncio.Semaphore(concurrency)
+
+    log_system_event(
+        "[多目标] 启动并发渗透测试",
+        {
+            "targets_count": len(clean_targets),
+            "max_concurrent_tasks": concurrency,
+        },
+    )
+
+    async def _worker(idx: int, target: str):
+        async with sem:
+            log_system_event(
+                "[多目标] 开始目标测试",
+                {"index": idx + 1, "total": len(clean_targets), "target": target},
+            )
+            try:
+                await run_single_target(
+                    target=target,
+                    max_retries=max_retries,
+                    target_id=target_id if len(clean_targets) == 1 else "",
+                    benchmark_path=benchmark_path if len(clean_targets) == 1 else "",
+                )
+            except Exception as exc:
+                log_system_event(
+                    "[多目标] 目标测试异常",
+                    {"target": target, "error": str(exc)},
+                    level=logging.ERROR,
+                )
+
+    await asyncio.gather(*[_worker(i, t) for i, t in enumerate(clean_targets)])
 
 
 async def run_api_mode():
-    """比赛模式 - 通过 API 获取题目，持续运行"""
+    """已废弃：旧比赛 API 模式。"""
+    raise RuntimeError(
+        "API mode has been deprecated in pentest-focused builds. "
+        "Please use single-target mode: `python main.py -t <target>`."
+    )
     # 延迟导入，仅在比赛模式使用
-    from chying_agent.task_launcher import start_challenge_task
-    from chying_agent.scheduler import (
+    from shell_agent.task_launcher import start_challenge_task
+    from shell_agent.scheduler import (
         check_and_start_pending_challenges,
         periodic_fetch_challenges,
         status_monitor,
@@ -264,6 +442,8 @@ async def run_api_mode():
     try:
         config_manager = get_config_manager()
         config = config_manager.config
+        runtime_summary = validate_runtime_environment(config)
+        log_system_event("[配置] 运行时配置检查通过", runtime_summary)
     except Exception as e:
         log_system_event(
             f"❌ 配置加载失败: {str(e)}\n"
@@ -287,21 +467,27 @@ async def run_api_mode():
 
     log_system_event(
         "=" * 80 + "\n" +
-        "🚀 CHYing Agent 比赛模式启动\n" +
+        "🚀 Shell Agent 比赛模式启动\n" +
         "=" * 80
     )
 
     # ==================== 2. 初始化 Langfuse ====================
-    try:
-        get_client()  # 验证连接
-        langfuse_handler = CallbackHandler()
-        log_system_event("[✓] Langfuse 初始化完成")
-    except Exception as e:
+    langfuse_handler = None
+    if _langfuse_enabled() and _has_real_env_value("LANGFUSE_SECRET_KEY") and _has_real_env_value("LANGFUSE_PUBLIC_KEY"):
+        try:
+            get_client()  # 验证连接
+            langfuse_handler = CallbackHandler()
+            log_system_event("[✓] Langfuse 初始化完成")
+        except Exception as e:
+            log_system_event(
+                f"⚠️ Langfuse 初始化失败，将继续运行: {str(e)}",
+                level=logging.WARNING
+            )
+    else:
         log_system_event(
-            f"⚠️ Langfuse 初始化失败，将继续运行: {str(e)}",
-            level=logging.WARNING
+            "[Langfuse] 已禁用或未配置有效 key，已跳过。",
+            level=logging.INFO
         )
-        langfuse_handler = None
 
     # ==================== 3. 初始化重试策略 ====================
     try:
@@ -316,7 +502,7 @@ async def run_api_mode():
 
     # ==================== 4. 初始化 API 客户端 ====================
     try:
-        from chying_agent.tools.competition_api_tools import CompetitionAPIClient
+        from shell_agent.tools.competition_api_tools import CompetitionAPIClient
         api_client = CompetitionAPIClient()
         log_system_event("[✓] API 客户端初始化完成")
     except Exception as e:
@@ -414,7 +600,7 @@ async def run_api_mode():
         "✅ 系统正在运行中...\n" +
         "- 按 Ctrl+C 可以优雅退出\n" +
         "- 系统会自动拉取新题目并创建解题任务\n" +
-        "- 失败的题目会自动重试（角色互换）\n" +
+        "- 失败的题目会自动重试（固定双智能体协作）\n" +
         "- 任务完成后会动态填充槽位\n" +
         "="*80
     )
@@ -445,9 +631,9 @@ async def run_api_mode():
 
 
 def main():
-    """主入口 - 解析命令行参数并选择运行模式"""
+    """主入口 - 解析命令行参数并启动单目标渗透测试"""
     parser = argparse.ArgumentParser(
-        description="CHYing Agent - AI 驱动的自动化渗透测试工具",
+        description="Shell Agent - AI 驱动的自动化渗透测试工具",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 示例:
@@ -456,27 +642,21 @@ def main():
   python main.py -t https://example.com
   python main.py -t 192.168.1.100:8080
 
+  # 多目标并发模式（并发上限由 MAX_CONCURRENT_TASKS 控制，且最多为 5）
+  python main.py -t http://192.168.1.10:8080 http://192.168.1.11:8080 http://192.168.1.12:8080
+
   # 单目标模式 + 重试
   python main.py -t http://192.168.1.100:8080 -r 3
-
-  # 比赛模式 - 通过 API 获取题目
-  python main.py -api
-  python main.py --api
         """
     )
 
-    # 互斥参数组
-    mode_group = parser.add_mutually_exclusive_group(required=True)
-    mode_group.add_argument(
+    parser.add_argument(
         "-t", "--target",
         type=str,
+        nargs="+",
+        required=True,
         metavar="URL",
-        help="单目标模式: 指定目标 URL (如 http://192.168.1.100:8080)"
-    )
-    mode_group.add_argument(
-        "-api", "--api",
-        action="store_true",
-        help="比赛模式: 通过 API 获取题目，持续运行"
+        help="指定一个或多个目标 URL，多个目标用空格分隔。"
     )
 
     # 可选参数
@@ -488,14 +668,40 @@ def main():
         help="单目标模式: 最大重试次数 (默认 0，不重试)"
     )
 
+    parser.add_argument(
+        "--target-id",
+        type=str,
+        default="",
+        help="Arena benchmark target id (example: vulhub.struts2.s2_045).",
+    )
+    parser.add_argument(
+        "--benchmark",
+        type=str,
+        default="",
+        help="Benchmark json path used with --target-id.",
+    )
+    parser.add_argument(
+        "--hint",
+        type=str,
+        default="",
+        help="单目标模式：手动注入提示文本（例如：Flask/Jinja2 SSTI）。",
+    )
+
     args = parser.parse_args()
 
-    # 根据参数选择运行模式
-    if args.target:
-        asyncio.run(run_single_target(args.target, max_retries=args.retry))
-    elif args.api:
-        asyncio.run(run_api_mode())
+    if args.hint:
+        os.environ["MANUAL_HINT_CONTENT"] = args.hint
+    asyncio.run(
+        run_multi_targets(
+            targets=args.target,
+            max_retries=args.retry,
+            target_id=args.target_id,
+            benchmark_path=args.benchmark,
+        )
+    )
 
 
 if __name__ == "__main__":
     main()
+
+

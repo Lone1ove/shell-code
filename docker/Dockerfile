@@ -9,6 +9,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN set -eux; \
     # 国内镜像优先，然后是国外镜像
     #mirrors="ftp.acc.umu.se/mirror/kali.org/kali mirror.math.princeton.edu/pub/kali kali.mirror.garr.it/mirrors/kali mirror.pit.teraswitch.com/kali"; \
+    #mirrors="mirrors.cloud.tencent.com/kali mirrors.tencent.com/kali ftp.acc.umu.se/mirror/kali.org/kali mirror.math.princeton.edu/pub/kali"; \
     mirrors="mirrors.aliyun.com/kali mirrors.cloud.tencent.com/kali mirrors.tencent.com/kali ftp.acc.umu.se/mirror/kali.org/kali mirror.math.princeton.edu/pub/kali"; \
     success=0; \
     for mirror in $mirrors; do \
@@ -175,8 +176,8 @@ RUN git clone https://xget-cfw.fireline.fun/gh/epinna/tplmap.git /opt/tools/tplm
     if [ -f /opt/tools/tplmap/tplmap.py ]; then chmod +x /opt/tools/tplmap/tplmap.py; fi
 
 # Install Python packages for security tools (use --break-system-packages for Kali)
-RUN pip3 install --break-system-packages --ignore-installed requests aiohttp jinja2 'httpx[cli]' ratelimit pycryptodomex -i https://xget-cfw.fireline.fun/pypi/simple/
-
+RUN pip3 install --break-system-packages --ignore-installed requests aiohttp jinja2 'httpx[cli]' ratelimit pycryptodomex -i https://pypi.org/simple
+#RUN pip3 install --break-system-packages --ignore-installed requests aiohttp jinja2 'httpx[cli]' ratelimit pycryptodomex -i https://xget-cfw.fireline.fun/pypi/simple/
 # Create wrapper scripts for easy access
 RUN ([ -d /opt/tools/clairvoyance ] && echo '#!/bin/bash\ncd /opt/tools/clairvoyance && source venv/bin/activate && python -m clairvoyance "$@"' > /usr/local/bin/clairvoyance && chmod +x /usr/local/bin/clairvoyance) || true && \
     ([ -f /opt/tools/jwt_tool/jwt_tool.py ] && echo '#!/bin/bash\npython3 /opt/tools/jwt_tool/jwt_tool.py "$@"' > /usr/local/bin/jwt-tool && chmod +x /usr/local/bin/jwt-tool) || true && \

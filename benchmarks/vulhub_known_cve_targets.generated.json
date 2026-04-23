@@ -1,0 +1,2363 @@
+{
+  "benchmark_name": "Vulhub Local Generated Known-CVE Targets",
+  "version": "2026-04-06",
+  "description": "Auto-generated from local vulhub repository README files.",
+  "targets": [
+    {
+      "id": "vulhub..",
+      "platform": "Vulhub",
+      "name": ".",
+      "expected_cves": [
+        "CVE-2025-3248"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.1panel.CVE_2024_39907",
+      "platform": "Vulhub",
+      "name": "1panel/CVE-2024-39907",
+      "expected_cves": [
+        "CVE-2024-39907"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.activemq.CVE_2015_5254",
+      "platform": "Vulhub",
+      "name": "activemq/CVE-2015-5254",
+      "expected_cves": [
+        "CVE-2015-5254"
+      ],
+      "family": "spring_rce"
+    },
+    {
+      "id": "vulhub.activemq.CVE_2016_3088",
+      "platform": "Vulhub",
+      "name": "activemq/CVE-2016-3088",
+      "expected_cves": [
+        "CVE-2016-3088"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.activemq.CVE_2022_41678",
+      "platform": "Vulhub",
+      "name": "activemq/CVE-2022-41678",
+      "expected_cves": [
+        "CVE-2022-41678"
+      ],
+      "family": "spring_rce"
+    },
+    {
+      "id": "vulhub.activemq.CVE_2023_46604",
+      "platform": "Vulhub",
+      "name": "activemq/CVE-2023-46604",
+      "expected_cves": [
+        "CVE-2023-46604"
+      ],
+      "family": "spring_rce"
+    },
+    {
+      "id": "vulhub.adminer.CVE_2021_21311",
+      "platform": "Vulhub",
+      "name": "adminer/CVE-2021-21311",
+      "expected_cves": [
+        "CVE-2021-21311"
+      ],
+      "family": "elasticsearch_unauthorized"
+    },
+    {
+      "id": "vulhub.adminer.CVE_2021_43008",
+      "platform": "Vulhub",
+      "name": "adminer/CVE-2021-43008",
+      "expected_cves": [
+        "CVE-2021-43008"
+      ],
+      "family": "elasticsearch_unauthorized"
+    },
+    {
+      "id": "vulhub.airflow.CVE_2020_11978",
+      "platform": "Vulhub",
+      "name": "airflow/CVE-2020-11978",
+      "expected_cves": [
+        "CVE-2020-11978"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.airflow.CVE_2020_11981",
+      "platform": "Vulhub",
+      "name": "airflow/CVE-2020-11981",
+      "expected_cves": [
+        "CVE-2020-11981"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.airflow.CVE_2020_17526",
+      "platform": "Vulhub",
+      "name": "airflow/CVE-2020-17526",
+      "expected_cves": [
+        "CVE-2020-17526"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.apache_cxf.CVE_2024_28752",
+      "platform": "Vulhub",
+      "name": "apache-cxf/CVE-2024-28752",
+      "expected_cves": [
+        "CVE-2024-28752"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.apache_druid.CVE_2021_25646",
+      "platform": "Vulhub",
+      "name": "apache-druid/CVE-2021-25646",
+      "expected_cves": [
+        "CVE-2021-25646"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.apisix.CVE_2020_13945",
+      "platform": "Vulhub",
+      "name": "apisix/CVE-2020-13945",
+      "expected_cves": [
+        "CVE-2020-13945"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.apisix.CVE_2021_45232",
+      "platform": "Vulhub",
+      "name": "apisix/CVE-2021-45232",
+      "expected_cves": [
+        "CVE-2021-45232"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.appweb.CVE_2018_8715",
+      "platform": "Vulhub",
+      "name": "appweb/CVE-2018-8715",
+      "expected_cves": [
+        "CVE-2018-8715"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.bash.CVE_2014_6271",
+      "platform": "Vulhub",
+      "name": "bash/CVE-2014-6271",
+      "expected_cves": [
+        "CVE-2014-6271"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.budibase.CVE_2026_31816",
+      "platform": "Vulhub",
+      "name": "budibase/CVE-2026-31816",
+      "expected_cves": [
+        "CVE-2026-31816"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.cacti.CVE_2022_46169",
+      "platform": "Vulhub",
+      "name": "cacti/CVE-2022-46169",
+      "expected_cves": [
+        "CVE-2022-46169"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.cacti.CVE_2023_39361",
+      "platform": "Vulhub",
+      "name": "cacti/CVE-2023-39361",
+      "expected_cves": [
+        "CVE-2023-39361",
+        "CVE-2024-31459"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.cacti.CVE_2025_24367",
+      "platform": "Vulhub",
+      "name": "cacti/CVE-2025-24367",
+      "expected_cves": [
+        "CVE-2025-24367"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.cgi.CVE_2016_5385",
+      "platform": "Vulhub",
+      "name": "cgi/CVE-2016-5385",
+      "expected_cves": [
+        "CVE-2016-1000104",
+        "CVE-2016-1000105",
+        "CVE-2016-1000107",
+        "CVE-2016-1000108",
+        "CVE-2016-1000109",
+        "CVE-2016-1000110",
+        "CVE-2016-1000111",
+        "CVE-2016-1000212",
+        "CVE-2016-5385",
+        "CVE-2016-5386",
+        "CVE-2016-5387",
+        "CVE-2016-5388",
+        "CVE-2016-6286",
+        "CVE-2016-6287"
+      ],
+      "family": "tomcat_put_upload"
+    },
+    {
+      "id": "vulhub.chartbrew.CVE_2026_25887",
+      "platform": "Vulhub",
+      "name": "chartbrew/CVE-2026-25887",
+      "expected_cves": [
+        "CVE-2026-25887"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.cmsms.CVE_2019_9053",
+      "platform": "Vulhub",
+      "name": "cmsms/CVE-2019-9053",
+      "expected_cves": [
+        "CVE-2019-9053",
+        "CVE-2021-26120"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.cmsms.CVE_2021_26120",
+      "platform": "Vulhub",
+      "name": "cmsms/CVE-2021-26120",
+      "expected_cves": [
+        "CVE-2019-9053",
+        "CVE-2021-26120"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.coldfusion.CVE_2010_2861",
+      "platform": "Vulhub",
+      "name": "coldfusion/CVE-2010-2861",
+      "expected_cves": [
+        "CVE-2010-2861"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.coldfusion.CVE_2017_3066",
+      "platform": "Vulhub",
+      "name": "coldfusion/CVE-2017-3066",
+      "expected_cves": [
+        "CVE-2017-3066"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.coldfusion.CVE_2023_26360",
+      "platform": "Vulhub",
+      "name": "coldfusion/CVE-2023-26360",
+      "expected_cves": [
+        "CVE-2023-26360"
+      ],
+      "family": "exchange_proxylogon"
+    },
+    {
+      "id": "vulhub.coldfusion.CVE_2023_29300",
+      "platform": "Vulhub",
+      "name": "coldfusion/CVE-2023-29300",
+      "expected_cves": [
+        "CVE-2023-29300"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.comfyui.CVE_2025_67303",
+      "platform": "Vulhub",
+      "name": "comfyui/CVE-2025-67303",
+      "expected_cves": [
+        "CVE-2025-67303"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.comfyui.CVE_2026_22777",
+      "platform": "Vulhub",
+      "name": "comfyui/CVE-2026-22777",
+      "expected_cves": [
+        "CVE-2025-67303",
+        "CVE-2026-22777"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.confluence.CVE_2019_3396",
+      "platform": "Vulhub",
+      "name": "confluence/CVE-2019-3396",
+      "expected_cves": [
+        "CVE-2019-3396"
+      ],
+      "family": "confluence_ognl"
+    },
+    {
+      "id": "vulhub.confluence.CVE_2021_26084",
+      "platform": "Vulhub",
+      "name": "confluence/CVE-2021-26084",
+      "expected_cves": [
+        "CVE-2019-3396",
+        "CVE-2021-26084"
+      ],
+      "family": "confluence_ognl"
+    },
+    {
+      "id": "vulhub.confluence.CVE_2022_26134",
+      "platform": "Vulhub",
+      "name": "confluence/CVE-2022-26134",
+      "expected_cves": [
+        "CVE-2019-3396",
+        "CVE-2022-26134"
+      ],
+      "family": "confluence_ognl"
+    },
+    {
+      "id": "vulhub.confluence.CVE_2023_22515",
+      "platform": "Vulhub",
+      "name": "confluence/CVE-2023-22515",
+      "expected_cves": [
+        "CVE-2019-3396",
+        "CVE-2023-22515"
+      ],
+      "family": "confluence_ognl"
+    },
+    {
+      "id": "vulhub.confluence.CVE_2023_22527",
+      "platform": "Vulhub",
+      "name": "confluence/CVE-2023-22527",
+      "expected_cves": [
+        "CVE-2019-3396",
+        "CVE-2023-22527"
+      ],
+      "family": "struts2_ognl"
+    },
+    {
+      "id": "vulhub.couchdb.CVE_2017_12635",
+      "platform": "Vulhub",
+      "name": "couchdb/CVE-2017-12635",
+      "expected_cves": [
+        "CVE-2017-12635"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.couchdb.CVE_2017_12636",
+      "platform": "Vulhub",
+      "name": "couchdb/CVE-2017-12636",
+      "expected_cves": [
+        "CVE-2017-12635",
+        "CVE-2017-12636"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.couchdb.CVE_2022_24706",
+      "platform": "Vulhub",
+      "name": "couchdb/CVE-2022-24706",
+      "expected_cves": [
+        "CVE-2022-24706"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.craftcms.CVE_2023_41892",
+      "platform": "Vulhub",
+      "name": "craftcms/CVE-2023-41892",
+      "expected_cves": [
+        "CVE-2023-41892"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.craftcms.CVE_2024_56145",
+      "platform": "Vulhub",
+      "name": "craftcms/CVE-2024-56145",
+      "expected_cves": [
+        "CVE-2024-56145"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.craftcms.CVE_2025_32432",
+      "platform": "Vulhub",
+      "name": "craftcms/CVE-2025-32432",
+      "expected_cves": [
+        "CVE-2025-32432"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.cups_browsed.CVE_2024_47177",
+      "platform": "Vulhub",
+      "name": "cups-browsed/CVE-2024-47177",
+      "expected_cves": [
+        "CVE-2024-47177"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.django.CVE_2017_12794",
+      "platform": "Vulhub",
+      "name": "django/CVE-2017-12794",
+      "expected_cves": [
+        "CVE-2017-12794"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.django.CVE_2018_14574",
+      "platform": "Vulhub",
+      "name": "django/CVE-2018-14574",
+      "expected_cves": [
+        "CVE-2018-14574"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.django.CVE_2019_14234",
+      "platform": "Vulhub",
+      "name": "django/CVE-2019-14234",
+      "expected_cves": [
+        "CVE-2019-14234"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.django.CVE_2020_9402",
+      "platform": "Vulhub",
+      "name": "django/CVE-2020-9402",
+      "expected_cves": [
+        "CVE-2020-9402"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.django.CVE_2021_35042",
+      "platform": "Vulhub",
+      "name": "django/CVE-2021-35042",
+      "expected_cves": [
+        "CVE-2021-35042"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.django.CVE_2022_34265",
+      "platform": "Vulhub",
+      "name": "django/CVE-2022-34265",
+      "expected_cves": [
+        "CVE-2022-34265"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.drupal.CVE_2014_3704",
+      "platform": "Vulhub",
+      "name": "drupal/CVE-2014-3704",
+      "expected_cves": [
+        "CVE-2014-3704"
+      ],
+      "family": "drupal_rce"
+    },
+    {
+      "id": "vulhub.drupal.CVE_2017_6920",
+      "platform": "Vulhub",
+      "name": "drupal/CVE-2017-6920",
+      "expected_cves": [
+        "CVE-2017-6920"
+      ],
+      "family": "drupal_rce"
+    },
+    {
+      "id": "vulhub.drupal.CVE_2018_7600",
+      "platform": "Vulhub",
+      "name": "drupal/CVE-2018-7600",
+      "expected_cves": [
+        "CVE-2018-7600"
+      ],
+      "family": "drupal_rce"
+    },
+    {
+      "id": "vulhub.drupal.CVE_2018_7602",
+      "platform": "Vulhub",
+      "name": "drupal/CVE-2018-7602",
+      "expected_cves": [
+        "CVE-2018-7600",
+        "CVE-2018-7602"
+      ],
+      "family": "drupal_rce"
+    },
+    {
+      "id": "vulhub.drupal.CVE_2019_6339",
+      "platform": "Vulhub",
+      "name": "drupal/CVE-2019-6339",
+      "expected_cves": [
+        "CVE-2019-6339"
+      ],
+      "family": "drupal_rce"
+    },
+    {
+      "id": "vulhub.drupal.CVE_2019_6341",
+      "platform": "Vulhub",
+      "name": "drupal/CVE-2019-6341",
+      "expected_cves": [
+        "CVE-2019-6339",
+        "CVE-2019-6341"
+      ],
+      "family": "drupal_rce"
+    },
+    {
+      "id": "vulhub.dubbo.CVE_2019_17564",
+      "platform": "Vulhub",
+      "name": "dubbo/CVE-2019-17564",
+      "expected_cves": [
+        "CVE-2019-17564"
+      ],
+      "family": "spring_rce"
+    },
+    {
+      "id": "vulhub.elasticsearch.CVE_2014_3120",
+      "platform": "Vulhub",
+      "name": "elasticsearch/CVE-2014-3120",
+      "expected_cves": [
+        "CVE-2014-3120"
+      ],
+      "family": "elasticsearch_unauthorized"
+    },
+    {
+      "id": "vulhub.elasticsearch.CVE_2015_1427",
+      "platform": "Vulhub",
+      "name": "elasticsearch/CVE-2015-1427",
+      "expected_cves": [
+        "CVE-2014-3120",
+        "CVE-2015-1427"
+      ],
+      "family": "elasticsearch_unauthorized"
+    },
+    {
+      "id": "vulhub.elasticsearch.CVE_2015_3337",
+      "platform": "Vulhub",
+      "name": "elasticsearch/CVE-2015-3337",
+      "expected_cves": [
+        "CVE-2015-3337"
+      ],
+      "family": "elasticsearch_unauthorized"
+    },
+    {
+      "id": "vulhub.elasticsearch.CVE_2015_5531",
+      "platform": "Vulhub",
+      "name": "elasticsearch/CVE-2015-5531",
+      "expected_cves": [
+        "CVE-2015-5531"
+      ],
+      "family": "elasticsearch_unauthorized"
+    },
+    {
+      "id": "vulhub.elasticsearch.WooYun_2015_110216",
+      "platform": "Vulhub",
+      "name": "elasticsearch/WooYun-2015-110216",
+      "expected_cves": [
+        "CVE-2015-5531"
+      ],
+      "family": "tomcat_put_upload"
+    },
+    {
+      "id": "vulhub.electron.CVE_2018_1000006",
+      "platform": "Vulhub",
+      "name": "electron/CVE-2018-1000006",
+      "expected_cves": [
+        "CVE-2018-1000006"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.electron.CVE_2018_15685",
+      "platform": "Vulhub",
+      "name": "electron/CVE-2018-15685",
+      "expected_cves": [
+        "CVE-2018-15685"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.elfinder.CVE_2021_32682",
+      "platform": "Vulhub",
+      "name": "elfinder/CVE-2021-32682",
+      "expected_cves": [
+        "CVE-2021-32682"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.erlang.CVE_2025_32433",
+      "platform": "Vulhub",
+      "name": "erlang/CVE-2025-32433",
+      "expected_cves": [
+        "CVE-2025-32433"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.fastjson.1.2.24_rce",
+      "platform": "Vulhub",
+      "name": "fastjson/1.2.24-rce",
+      "expected_cves": [
+        "CVE-2017-18349"
+      ],
+      "family": "fastjson_deserialization"
+    },
+    {
+      "id": "vulhub.ffmpeg.CVE_2016_1897",
+      "platform": "Vulhub",
+      "name": "ffmpeg/CVE-2016-1897",
+      "expected_cves": [
+        "CVE-2016-1897",
+        "CVE-2016-1898"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.ffmpeg.CVE_2017_9993",
+      "platform": "Vulhub",
+      "name": "ffmpeg/CVE-2017-9993",
+      "expected_cves": [
+        "CVE-2016-1897",
+        "CVE-2017-9993"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.flink.CVE_2020_17518",
+      "platform": "Vulhub",
+      "name": "flink/CVE-2020-17518",
+      "expected_cves": [
+        "CVE-2020-17518"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.flink.CVE_2020_17519",
+      "platform": "Vulhub",
+      "name": "flink/CVE-2020-17519",
+      "expected_cves": [
+        "CVE-2020-17519"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.geoserver.CVE_2021_40822",
+      "platform": "Vulhub",
+      "name": "geoserver/CVE-2021-40822",
+      "expected_cves": [
+        "CVE-2021-40822"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.geoserver.CVE_2022_24816",
+      "platform": "Vulhub",
+      "name": "geoserver/CVE-2022-24816",
+      "expected_cves": [
+        "CVE-2022-24816",
+        "CVE-2023-35042"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.geoserver.CVE_2023_25157",
+      "platform": "Vulhub",
+      "name": "geoserver/CVE-2023-25157",
+      "expected_cves": [
+        "CVE-2023-25157",
+        "CVE-2023-25158"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.geoserver.CVE_2024_36401",
+      "platform": "Vulhub",
+      "name": "geoserver/CVE-2024-36401",
+      "expected_cves": [
+        "CVE-2022-41852",
+        "CVE-2024-36401"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.ghostscript.CVE_2018_16509",
+      "platform": "Vulhub",
+      "name": "ghostscript/CVE-2018-16509",
+      "expected_cves": [
+        "CVE-2018-16509"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.ghostscript.CVE_2018_19475",
+      "platform": "Vulhub",
+      "name": "ghostscript/CVE-2018-19475",
+      "expected_cves": [
+        "CVE-2018-16509",
+        "CVE-2018-19475"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.ghostscript.CVE_2019_6116",
+      "platform": "Vulhub",
+      "name": "ghostscript/CVE-2019-6116",
+      "expected_cves": [
+        "CVE-2019-6116"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.git.CVE_2017_8386",
+      "platform": "Vulhub",
+      "name": "git/CVE-2017-8386",
+      "expected_cves": [
+        "CVE-2017-8386"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.gitlab.CVE_2016_9086",
+      "platform": "Vulhub",
+      "name": "gitlab/CVE-2016-9086",
+      "expected_cves": [
+        "CVE-2016-9086"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.gitlab.CVE_2021_22205",
+      "platform": "Vulhub",
+      "name": "gitlab/CVE-2021-22205",
+      "expected_cves": [
+        "CVE-2021-22204",
+        "CVE-2021-22205"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.gitlist.0.6.0_rce",
+      "platform": "Vulhub",
+      "name": "gitlist/0.6.0-rce",
+      "expected_cves": [
+        "CVE-2018-1000533"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.gitlist.CVE_2018_1000533",
+      "platform": "Vulhub",
+      "name": "gitlist/CVE-2018-1000533",
+      "expected_cves": [
+        "CVE-2018-1000533"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.glassfish.CVE_2017_1000028",
+      "platform": "Vulhub",
+      "name": "glassfish/CVE-2017-1000028",
+      "expected_cves": [
+        "CVE-2017-1000028"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.goahead.CVE_2017_17562",
+      "platform": "Vulhub",
+      "name": "goahead/CVE-2017-17562",
+      "expected_cves": [
+        "CVE-2017-17562"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.goahead.CVE_2021_42342",
+      "platform": "Vulhub",
+      "name": "goahead/CVE-2021-42342",
+      "expected_cves": [
+        "CVE-2017-17562",
+        "CVE-2021-42342"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.gogs.CVE_2018_18925",
+      "platform": "Vulhub",
+      "name": "gogs/CVE-2018-18925",
+      "expected_cves": [
+        "CVE-2018-18925"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.gradio.CVE_2023_51449",
+      "platform": "Vulhub",
+      "name": "gradio/CVE-2023-51449",
+      "expected_cves": [
+        "CVE-2023-51449"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.gradio.CVE_2024_1561",
+      "platform": "Vulhub",
+      "name": "gradio/CVE-2024-1561",
+      "expected_cves": [
+        "CVE-2024-1561"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.grafana.CVE_2021_43798",
+      "platform": "Vulhub",
+      "name": "grafana/CVE-2021-43798",
+      "expected_cves": [
+        "CVE-2021-43798"
+      ],
+      "family": "elasticsearch_unauthorized"
+    },
+    {
+      "id": "vulhub.grafana.CVE_2024_9264",
+      "platform": "Vulhub",
+      "name": "grafana/CVE-2024-9264",
+      "expected_cves": [
+        "CVE-2024-9264"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.h2database.CVE_2018_10054",
+      "platform": "Vulhub",
+      "name": "h2database/CVE-2018-10054",
+      "expected_cves": [
+        "CVE-2018-10054"
+      ],
+      "family": "spring_rce"
+    },
+    {
+      "id": "vulhub.h2database.CVE_2021_42392",
+      "platform": "Vulhub",
+      "name": "h2database/CVE-2021-42392",
+      "expected_cves": [
+        "CVE-2018-10054",
+        "CVE-2021-42392"
+      ],
+      "family": "spring_rce"
+    },
+    {
+      "id": "vulhub.h2database.CVE_2022_23221",
+      "platform": "Vulhub",
+      "name": "h2database/CVE-2022-23221",
+      "expected_cves": [
+        "CVE-2018-10054",
+        "CVE-2022-23221"
+      ],
+      "family": "spring_rce"
+    },
+    {
+      "id": "vulhub.hertzbeat.CVE_2024_42323",
+      "platform": "Vulhub",
+      "name": "hertzbeat/CVE-2024-42323",
+      "expected_cves": [
+        "CVE-2024-42323"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.httpd.CVE_2017_15715",
+      "platform": "Vulhub",
+      "name": "httpd/CVE-2017-15715",
+      "expected_cves": [
+        "CVE-2017-15715"
+      ],
+      "family": "apache_traversal"
+    },
+    {
+      "id": "vulhub.httpd.CVE_2021_40438",
+      "platform": "Vulhub",
+      "name": "httpd/CVE-2021-40438",
+      "expected_cves": [
+        "CVE-2021-40438"
+      ],
+      "family": "tomcat_put_upload"
+    },
+    {
+      "id": "vulhub.httpd.CVE_2021_41773",
+      "platform": "Vulhub",
+      "name": "httpd/CVE-2021-41773",
+      "expected_cves": [
+        "CVE-2021-41773"
+      ],
+      "family": "apache_traversal"
+    },
+    {
+      "id": "vulhub.httpd.CVE_2021_42013",
+      "platform": "Vulhub",
+      "name": "httpd/CVE-2021-42013",
+      "expected_cves": [
+        "CVE-2021-41773",
+        "CVE-2021-42013"
+      ],
+      "family": "apache_traversal"
+    },
+    {
+      "id": "vulhub.hugegraph.CVE_2024_27348",
+      "platform": "Vulhub",
+      "name": "hugegraph/CVE-2024-27348",
+      "expected_cves": [
+        "CVE-2024-27348"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.hugegraph.CVE_2024_43441",
+      "platform": "Vulhub",
+      "name": "hugegraph/CVE-2024-43441",
+      "expected_cves": [
+        "CVE-2024-43441"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.imagemagick.CVE_2016_3714",
+      "platform": "Vulhub",
+      "name": "imagemagick/CVE-2016-3714",
+      "expected_cves": [
+        "CVE-2016-3714"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.imagemagick.CVE_2020_29599",
+      "platform": "Vulhub",
+      "name": "imagemagick/CVE-2020-29599",
+      "expected_cves": [
+        "CVE-2020-29599"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.imagemagick.CVE_2022_44268",
+      "platform": "Vulhub",
+      "name": "imagemagick/CVE-2022-44268",
+      "expected_cves": [
+        "CVE-2022-44268"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.imagemagick.imagetragick",
+      "platform": "Vulhub",
+      "name": "imagemagick/imagetragick",
+      "expected_cves": [
+        "CVE-2016-3714"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.inetutils.CVE_2026_24061",
+      "platform": "Vulhub",
+      "name": "inetutils/CVE-2026-24061",
+      "expected_cves": [
+        "CVE-2026-24061"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.influxdb.CVE_2019_20933",
+      "platform": "Vulhub",
+      "name": "influxdb/CVE-2019-20933",
+      "expected_cves": [
+        "CVE-2019-20933"
+      ],
+      "family": "apache_traversal"
+    },
+    {
+      "id": "vulhub.ingress_nginx.CVE_2025_1974",
+      "platform": "Vulhub",
+      "name": "ingress-nginx/CVE-2025-1974",
+      "expected_cves": [
+        "CVE-2025-1097",
+        "CVE-2025-1098",
+        "CVE-2025-1974",
+        "CVE-2025-24514"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.jackson.CVE_2017_7525",
+      "platform": "Vulhub",
+      "name": "jackson/CVE-2017-7525",
+      "expected_cves": [
+        "CVE-2017-17485",
+        "CVE-2017-7525"
+      ],
+      "family": "spring_rce"
+    },
+    {
+      "id": "vulhub.jboss.CVE_2017_12149",
+      "platform": "Vulhub",
+      "name": "jboss/CVE-2017-12149",
+      "expected_cves": [
+        "CVE-2017-12149"
+      ],
+      "family": "jboss_deserialization"
+    },
+    {
+      "id": "vulhub.jboss.CVE_2017_7504",
+      "platform": "Vulhub",
+      "name": "jboss/CVE-2017-7504",
+      "expected_cves": [
+        "CVE-2017-7504"
+      ],
+      "family": "jboss_deserialization"
+    },
+    {
+      "id": "vulhub.jboss.JMXInvokerServlet_deserialization",
+      "platform": "Vulhub",
+      "name": "jboss/JMXInvokerServlet-deserialization",
+      "expected_cves": [
+        "CVE-2017-12149"
+      ],
+      "family": "weblogic_t3_deserialization"
+    },
+    {
+      "id": "vulhub.jenkins.CVE_2017_1000353",
+      "platform": "Vulhub",
+      "name": "jenkins/CVE-2017-1000353",
+      "expected_cves": [
+        "CVE-2017-1000353"
+      ],
+      "family": "jenkins_rce"
+    },
+    {
+      "id": "vulhub.jenkins.CVE_2018_1000861",
+      "platform": "Vulhub",
+      "name": "jenkins/CVE-2018-1000861",
+      "expected_cves": [
+        "CVE-2018-1000861"
+      ],
+      "family": "jenkins_rce"
+    },
+    {
+      "id": "vulhub.jenkins.CVE_2024_23897",
+      "platform": "Vulhub",
+      "name": "jenkins/CVE-2024-23897",
+      "expected_cves": [
+        "CVE-2024-23897"
+      ],
+      "family": "jenkins_rce"
+    },
+    {
+      "id": "vulhub.jetty.CVE_2021_28164",
+      "platform": "Vulhub",
+      "name": "jetty/CVE-2021-28164",
+      "expected_cves": [
+        "CVE-2021-28164"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.jetty.CVE_2021_28169",
+      "platform": "Vulhub",
+      "name": "jetty/CVE-2021-28169",
+      "expected_cves": [
+        "CVE-2021-28169"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.jetty.CVE_2021_34429",
+      "platform": "Vulhub",
+      "name": "jetty/CVE-2021-34429",
+      "expected_cves": [
+        "CVE-2021-28164",
+        "CVE-2021-34429"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.jimureport.CVE_2023_4450",
+      "platform": "Vulhub",
+      "name": "jimureport/CVE-2023-4450",
+      "expected_cves": [
+        "CVE-2023-4450"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.jira.CVE_2019_11581",
+      "platform": "Vulhub",
+      "name": "jira/CVE-2019-11581",
+      "expected_cves": [
+        "CVE-2019-11581",
+        "CVE-2019-3396"
+      ],
+      "family": "confluence_ognl"
+    },
+    {
+      "id": "vulhub.jmeter.CVE_2018_1297",
+      "platform": "Vulhub",
+      "name": "jmeter/CVE-2018-1297",
+      "expected_cves": [
+        "CVE-2018-1297"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.joomla.CVE_2015_8562",
+      "platform": "Vulhub",
+      "name": "joomla/CVE-2015-8562",
+      "expected_cves": [
+        "CVE-2015-8562"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.joomla.CVE_2017_8917",
+      "platform": "Vulhub",
+      "name": "joomla/CVE-2017-8917",
+      "expected_cves": [
+        "CVE-2017-8917"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.joomla.CVE_2023_23752",
+      "platform": "Vulhub",
+      "name": "joomla/CVE-2023-23752",
+      "expected_cves": [
+        "CVE-2023-23752"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.jumpserver.CVE_2023_42820",
+      "platform": "Vulhub",
+      "name": "jumpserver/CVE-2023-42820",
+      "expected_cves": [
+        "CVE-2023-42820"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.kafka.CVE_2023_25194",
+      "platform": "Vulhub",
+      "name": "kafka/CVE-2023-25194",
+      "expected_cves": [
+        "CVE-2023-25194"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.kibana.CVE_2018_17246",
+      "platform": "Vulhub",
+      "name": "kibana/CVE-2018-17246",
+      "expected_cves": [
+        "CVE-2018-17246"
+      ],
+      "family": "elasticsearch_unauthorized"
+    },
+    {
+      "id": "vulhub.kibana.CVE_2019_7609",
+      "platform": "Vulhub",
+      "name": "kibana/CVE-2019-7609",
+      "expected_cves": [
+        "CVE-2019-7609"
+      ],
+      "family": "elasticsearch_unauthorized"
+    },
+    {
+      "id": "vulhub.kibana.CVE_2020_7012",
+      "platform": "Vulhub",
+      "name": "kibana/CVE-2020-7012",
+      "expected_cves": [
+        "CVE-2020-7012"
+      ],
+      "family": "elasticsearch_unauthorized"
+    },
+    {
+      "id": "vulhub.langflow.CVE_2025_3248",
+      "platform": "Vulhub",
+      "name": "langflow/CVE-2025-3248",
+      "expected_cves": [
+        "CVE-2025-3248"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.laravel.CVE_2021_3129",
+      "platform": "Vulhub",
+      "name": "laravel/CVE-2021-3129",
+      "expected_cves": [
+        "CVE-2021-3129"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.librsvg.CVE_2023_38633",
+      "platform": "Vulhub",
+      "name": "librsvg/CVE-2023-38633",
+      "expected_cves": [
+        "CVE-2023-38633"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.libssh.CVE_2018_10933",
+      "platform": "Vulhub",
+      "name": "libssh/CVE-2018-10933",
+      "expected_cves": [
+        "CVE-2018-10933"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.liferay_portal.CVE_2020_7961",
+      "platform": "Vulhub",
+      "name": "liferay-portal/CVE-2020-7961",
+      "expected_cves": [
+        "CVE-2020-7961"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.livewire.CVE_2025_54068",
+      "platform": "Vulhub",
+      "name": "livewire/CVE-2025-54068",
+      "expected_cves": [
+        "CVE-2025-54068"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.log4j.CVE_2017_5645",
+      "platform": "Vulhub",
+      "name": "log4j/CVE-2017-5645",
+      "expected_cves": [
+        "CVE-2017-5645"
+      ],
+      "family": "log4j_jndi"
+    },
+    {
+      "id": "vulhub.log4j.CVE_2021_44228",
+      "platform": "Vulhub",
+      "name": "log4j/CVE-2021-44228",
+      "expected_cves": [
+        "CVE-2021-44228"
+      ],
+      "family": "log4j_jndi"
+    },
+    {
+      "id": "vulhub.metabase.CVE_2021_41277",
+      "platform": "Vulhub",
+      "name": "metabase/CVE-2021-41277",
+      "expected_cves": [
+        "CVE-2021-41277"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.metabase.CVE_2023_38646",
+      "platform": "Vulhub",
+      "name": "metabase/CVE-2023-38646",
+      "expected_cves": [
+        "CVE-2023-38646"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.metersphere.CVE_2021_45788",
+      "platform": "Vulhub",
+      "name": "metersphere/CVE-2021-45788",
+      "expected_cves": [
+        "CVE-2021-45788"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.mini_httpd.CVE_2018_18778",
+      "platform": "Vulhub",
+      "name": "mini_httpd/CVE-2018-18778",
+      "expected_cves": [
+        "CVE-2018-18778"
+      ],
+      "family": "apache_traversal"
+    },
+    {
+      "id": "vulhub.minio.CVE_2023_28432",
+      "platform": "Vulhub",
+      "name": "minio/CVE-2023-28432",
+      "expected_cves": [
+        "CVE-2023-28432"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.mongo_express.CVE_2019_10758",
+      "platform": "Vulhub",
+      "name": "mongo-express/CVE-2019-10758",
+      "expected_cves": [
+        "CVE-2019-10758"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.mysql.CVE_2012_2122",
+      "platform": "Vulhub",
+      "name": "mysql/CVE-2012-2122",
+      "expected_cves": [
+        "CVE-2012-2122"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.n8n.CVE_2025_68613",
+      "platform": "Vulhub",
+      "name": "n8n/CVE-2025-68613",
+      "expected_cves": [
+        "CVE-2025-68613",
+        "CVE-2026-21858"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.n8n.CVE_2026_21858",
+      "platform": "Vulhub",
+      "name": "n8n/CVE-2026-21858",
+      "expected_cves": [
+        "CVE-2025-68613",
+        "CVE-2026-21858"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.nacos.CVE_2021_29441",
+      "platform": "Vulhub",
+      "name": "nacos/CVE-2021-29441",
+      "expected_cves": [
+        "CVE-2021-29441"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.nacos.CVE_2021_29442",
+      "platform": "Vulhub",
+      "name": "nacos/CVE-2021-29442",
+      "expected_cves": [
+        "CVE-2021-29442"
+      ],
+      "family": "spring_rce"
+    },
+    {
+      "id": "vulhub.neo4j.CVE_2021_34371",
+      "platform": "Vulhub",
+      "name": "neo4j/CVE-2021-34371",
+      "expected_cves": [
+        "CVE-2021-34371"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.next.js.CVE_2025_29927",
+      "platform": "Vulhub",
+      "name": "next.js/CVE-2025-29927",
+      "expected_cves": [
+        "CVE-2025-29927"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.nexus.CVE_2019_7238",
+      "platform": "Vulhub",
+      "name": "nexus/CVE-2019-7238",
+      "expected_cves": [
+        "CVE-2019-7238"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.nexus.CVE_2020_10199",
+      "platform": "Vulhub",
+      "name": "nexus/CVE-2020-10199",
+      "expected_cves": [
+        "CVE-2020-10199"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.nexus.CVE_2020_10204",
+      "platform": "Vulhub",
+      "name": "nexus/CVE-2020-10204",
+      "expected_cves": [
+        "CVE-2018-16621",
+        "CVE-2020-10199",
+        "CVE-2020-10204"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.nexus.CVE_2024_4956",
+      "platform": "Vulhub",
+      "name": "nexus/CVE-2024-4956",
+      "expected_cves": [
+        "CVE-2018-1271",
+        "CVE-2024-4956"
+      ],
+      "family": "spring_rce"
+    },
+    {
+      "id": "vulhub.nginx.CVE_2013_4547",
+      "platform": "Vulhub",
+      "name": "nginx/CVE-2013-4547",
+      "expected_cves": [
+        "CVE-2013-4547"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.nginx.CVE_2017_7529",
+      "platform": "Vulhub",
+      "name": "nginx/CVE-2017-7529",
+      "expected_cves": [
+        "CVE-2017-7529"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.nginx.insecure_configuration",
+      "platform": "Vulhub",
+      "name": "nginx/insecure-configuration",
+      "expected_cves": [
+        "CVE-2016-9964"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.nginx_ui.CVE_2026_27944",
+      "platform": "Vulhub",
+      "name": "nginx-ui/CVE-2026-27944",
+      "expected_cves": [
+        "CVE-2026-27944"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.node.CVE_2017_14849",
+      "platform": "Vulhub",
+      "name": "node/CVE-2017-14849",
+      "expected_cves": [
+        "CVE-2017-14849"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.node.CVE_2017_16082",
+      "platform": "Vulhub",
+      "name": "node/CVE-2017-16082",
+      "expected_cves": [
+        "CVE-2017-16082"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.ntopng.CVE_2021_28073",
+      "platform": "Vulhub",
+      "name": "ntopng/CVE-2021-28073",
+      "expected_cves": [
+        "CVE-2021-28073"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.ofbiz.CVE_2020_9496",
+      "platform": "Vulhub",
+      "name": "ofbiz/CVE-2020-9496",
+      "expected_cves": [
+        "CVE-2020-9496"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.ofbiz.CVE_2023_49070",
+      "platform": "Vulhub",
+      "name": "ofbiz/CVE-2023-49070",
+      "expected_cves": [
+        "CVE-2020-9496",
+        "CVE-2023-49070"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.ofbiz.CVE_2023_51467",
+      "platform": "Vulhub",
+      "name": "ofbiz/CVE-2023-51467",
+      "expected_cves": [
+        "CVE-2023-49070",
+        "CVE-2023-51467"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.ofbiz.CVE_2024_38856",
+      "platform": "Vulhub",
+      "name": "ofbiz/CVE-2024-38856",
+      "expected_cves": [
+        "CVE-2023-51467",
+        "CVE-2024-38856"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.ofbiz.CVE_2024_45195",
+      "platform": "Vulhub",
+      "name": "ofbiz/CVE-2024-45195",
+      "expected_cves": [
+        "CVE-2024-32113",
+        "CVE-2024-36104",
+        "CVE-2024-38856",
+        "CVE-2024-45195"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.ofbiz.CVE_2024_45507",
+      "platform": "Vulhub",
+      "name": "ofbiz/CVE-2024-45507",
+      "expected_cves": [
+        "CVE-2024-45507"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.openfire.CVE_2023_32315",
+      "platform": "Vulhub",
+      "name": "openfire/CVE-2023-32315",
+      "expected_cves": [
+        "CVE-2008-6508",
+        "CVE-2023-32315"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.opensmtpd.CVE_2020_7247",
+      "platform": "Vulhub",
+      "name": "opensmtpd/CVE-2020-7247",
+      "expected_cves": [
+        "CVE-2020-7247"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.openssh.CVE_2018_15473",
+      "platform": "Vulhub",
+      "name": "openssh/CVE-2018-15473",
+      "expected_cves": [
+        "CVE-2018-15473"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.openssl.CVE_2014_0160",
+      "platform": "Vulhub",
+      "name": "openssl/CVE-2014-0160",
+      "expected_cves": [
+        "CVE-2014-0160"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.openssl.CVE_2022_0778",
+      "platform": "Vulhub",
+      "name": "openssl/CVE-2022-0778",
+      "expected_cves": [
+        "CVE-2022-0778"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.openssl.heartbleed",
+      "platform": "Vulhub",
+      "name": "openssl/heartbleed",
+      "expected_cves": [
+        "CVE-2014-0160"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.opentsdb.CVE_2020_35476",
+      "platform": "Vulhub",
+      "name": "opentsdb/CVE-2020-35476",
+      "expected_cves": [
+        "CVE-2020-35476"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.opentsdb.CVE_2023_25826",
+      "platform": "Vulhub",
+      "name": "opentsdb/CVE-2023-25826",
+      "expected_cves": [
+        "CVE-2020-35476",
+        "CVE-2023-25826"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.owncloud.CVE_2023_49103",
+      "platform": "Vulhub",
+      "name": "owncloud/CVE-2023-49103",
+      "expected_cves": [
+        "CVE-2023-49103"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.pdfjs.CVE_2024_4367",
+      "platform": "Vulhub",
+      "name": "pdfjs/CVE-2024-4367",
+      "expected_cves": [
+        "CVE-2024-4367"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.pgadmin.CVE_2022_4223",
+      "platform": "Vulhub",
+      "name": "pgadmin/CVE-2022-4223",
+      "expected_cves": [
+        "CVE-2022-4223"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.pgadmin.CVE_2023_5002",
+      "platform": "Vulhub",
+      "name": "pgadmin/CVE-2023-5002",
+      "expected_cves": [
+        "CVE-2022-4223",
+        "CVE-2023-5002"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.pgadmin.CVE_2025_13780",
+      "platform": "Vulhub",
+      "name": "pgadmin/CVE-2025-13780",
+      "expected_cves": [
+        "CVE-2025-13780"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.pgadmin.CVE_2025_2945",
+      "platform": "Vulhub",
+      "name": "pgadmin/CVE-2025-2945",
+      "expected_cves": [
+        "CVE-2025-2945"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.php.CVE_2012_1823",
+      "platform": "Vulhub",
+      "name": "php/CVE-2012-1823",
+      "expected_cves": [
+        "CVE-2012-1823",
+        "CVE-2012-2311"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.php.CVE_2018_19518",
+      "platform": "Vulhub",
+      "name": "php/CVE-2018-19518",
+      "expected_cves": [
+        "CVE-2018-19518"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.php.CVE_2019_11043",
+      "platform": "Vulhub",
+      "name": "php/CVE-2019-11043",
+      "expected_cves": [
+        "CVE-2019-11043"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.php.CVE_2024_2961",
+      "platform": "Vulhub",
+      "name": "php/CVE-2024-2961",
+      "expected_cves": [
+        "CVE-2024-2961"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.phpmailer.CVE_2017_5223",
+      "platform": "Vulhub",
+      "name": "phpmailer/CVE-2017-5223",
+      "expected_cves": [
+        "CVE-2017-5223"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.phpmyadmin.CVE_2016_5734",
+      "platform": "Vulhub",
+      "name": "phpmyadmin/CVE-2016-5734",
+      "expected_cves": [
+        "CVE-2016-5734"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.phpmyadmin.CVE_2018_12613",
+      "platform": "Vulhub",
+      "name": "phpmyadmin/CVE-2018-12613",
+      "expected_cves": [
+        "CVE-2018-12613"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.phpunit.CVE_2017_9841",
+      "platform": "Vulhub",
+      "name": "phpunit/CVE-2017-9841",
+      "expected_cves": [
+        "CVE-2017-9841"
+      ],
+      "family": "phpunit_eval_rce"
+    },
+    {
+      "id": "vulhub.polkit.CVE_2021_4034",
+      "platform": "Vulhub",
+      "name": "polkit/CVE-2021-4034",
+      "expected_cves": [
+        "CVE-2021-4034"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.postgres.CVE_2018_1058",
+      "platform": "Vulhub",
+      "name": "postgres/CVE-2018-1058",
+      "expected_cves": [
+        "CVE-2018-1058"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.postgres.CVE_2019_9193",
+      "platform": "Vulhub",
+      "name": "postgres/CVE-2019-9193",
+      "expected_cves": [
+        "CVE-2019-9193"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.python.CVE_2024_23334",
+      "platform": "Vulhub",
+      "name": "python/CVE-2024-23334",
+      "expected_cves": [
+        "CVE-2024-23334"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.python.PIL_CVE_2017_8291",
+      "platform": "Vulhub",
+      "name": "python/PIL-CVE-2017-8291",
+      "expected_cves": [
+        "CVE-2017-8291"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.python.PIL_CVE_2018_16509",
+      "platform": "Vulhub",
+      "name": "python/PIL-CVE-2018-16509",
+      "expected_cves": [
+        "CVE-2018-16509"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.rails.CVE_2018_3760",
+      "platform": "Vulhub",
+      "name": "rails/CVE-2018-3760",
+      "expected_cves": [
+        "CVE-2018-3760"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.rails.CVE_2019_5418",
+      "platform": "Vulhub",
+      "name": "rails/CVE-2019-5418",
+      "expected_cves": [
+        "CVE-2019-5418"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.react.CVE_2025_55182",
+      "platform": "Vulhub",
+      "name": "react/CVE-2025-55182",
+      "expected_cves": [
+        "CVE-2025-55182",
+        "CVE-2025-66478"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.redis.CVE_2022_0543",
+      "platform": "Vulhub",
+      "name": "redis/CVE-2022-0543",
+      "expected_cves": [
+        "CVE-2022-0543"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.rocketchat.CVE_2021_22911",
+      "platform": "Vulhub",
+      "name": "rocketchat/CVE-2021-22911",
+      "expected_cves": [
+        "CVE-2021-22911"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.rocketmq.CVE_2023_33246",
+      "platform": "Vulhub",
+      "name": "rocketmq/CVE-2023-33246",
+      "expected_cves": [
+        "CVE-2023-33246"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.rocketmq.CVE_2023_37582",
+      "platform": "Vulhub",
+      "name": "rocketmq/CVE-2023-37582",
+      "expected_cves": [
+        "CVE-2023-33246",
+        "CVE-2023-37582"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.ruby.CVE_2017_17405",
+      "platform": "Vulhub",
+      "name": "ruby/CVE-2017-17405",
+      "expected_cves": [
+        "CVE-2017-17405"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.saltstack.CVE_2020_11651",
+      "platform": "Vulhub",
+      "name": "saltstack/CVE-2020-11651",
+      "expected_cves": [
+        "CVE-2020-11651",
+        "CVE-2020-11652"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.saltstack.CVE_2020_11652",
+      "platform": "Vulhub",
+      "name": "saltstack/CVE-2020-11652",
+      "expected_cves": [
+        "CVE-2020-11651",
+        "CVE-2020-11652"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.saltstack.CVE_2020_16846",
+      "platform": "Vulhub",
+      "name": "saltstack/CVE-2020-16846",
+      "expected_cves": [
+        "CVE-2020-16846",
+        "CVE-2020-25592"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.samba.CVE_2017_7494",
+      "platform": "Vulhub",
+      "name": "samba/CVE-2017-7494",
+      "expected_cves": [
+        "CVE-2017-7494"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.shiro.CVE_2010_3863",
+      "platform": "Vulhub",
+      "name": "shiro/CVE-2010-3863",
+      "expected_cves": [
+        "CVE-2010-3863"
+      ],
+      "family": "shiro_rememberme"
+    },
+    {
+      "id": "vulhub.shiro.CVE_2016_4437",
+      "platform": "Vulhub",
+      "name": "shiro/CVE-2016-4437",
+      "expected_cves": [
+        "CVE-2016-4437"
+      ],
+      "family": "shiro_rememberme"
+    },
+    {
+      "id": "vulhub.shiro.CVE_2020_1957",
+      "platform": "Vulhub",
+      "name": "shiro/CVE-2020-1957",
+      "expected_cves": [
+        "CVE-2020-1957"
+      ],
+      "family": "shiro_rememberme"
+    },
+    {
+      "id": "vulhub.solr.CVE_2017_12629_RCE",
+      "platform": "Vulhub",
+      "name": "solr/CVE-2017-12629-RCE",
+      "expected_cves": [
+        "CVE-2017-12629"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.solr.CVE_2017_12629_XXE",
+      "platform": "Vulhub",
+      "name": "solr/CVE-2017-12629-XXE",
+      "expected_cves": [
+        "CVE-2017-12629"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.solr.CVE_2019_0193",
+      "platform": "Vulhub",
+      "name": "solr/CVE-2019-0193",
+      "expected_cves": [
+        "CVE-2019-0193"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.solr.CVE_2019_17558",
+      "platform": "Vulhub",
+      "name": "solr/CVE-2019-17558",
+      "expected_cves": [
+        "CVE-2019-17558"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.spring.CVE_2016_4977",
+      "platform": "Vulhub",
+      "name": "spring/CVE-2016-4977",
+      "expected_cves": [
+        "CVE-2016-4977"
+      ],
+      "family": "spring_rce"
+    },
+    {
+      "id": "vulhub.spring.CVE_2017_4971",
+      "platform": "Vulhub",
+      "name": "spring/CVE-2017-4971",
+      "expected_cves": [
+        "CVE-2017-4971"
+      ],
+      "family": "spring_rce"
+    },
+    {
+      "id": "vulhub.spring.CVE_2017_8046",
+      "platform": "Vulhub",
+      "name": "spring/CVE-2017-8046",
+      "expected_cves": [
+        "CVE-2017-8046"
+      ],
+      "family": "spring_rce"
+    },
+    {
+      "id": "vulhub.spring.CVE_2018_1270",
+      "platform": "Vulhub",
+      "name": "spring/CVE-2018-1270",
+      "expected_cves": [
+        "CVE-2018-1270"
+      ],
+      "family": "spring_rce"
+    },
+    {
+      "id": "vulhub.spring.CVE_2018_1273",
+      "platform": "Vulhub",
+      "name": "spring/CVE-2018-1273",
+      "expected_cves": [
+        "CVE-2018-1273"
+      ],
+      "family": "spring_rce"
+    },
+    {
+      "id": "vulhub.spring.CVE_2022_22947",
+      "platform": "Vulhub",
+      "name": "spring/CVE-2022-22947",
+      "expected_cves": [
+        "CVE-2022-22947"
+      ],
+      "family": "spring_rce"
+    },
+    {
+      "id": "vulhub.spring.CVE_2022_22963",
+      "platform": "Vulhub",
+      "name": "spring/CVE-2022-22963",
+      "expected_cves": [
+        "CVE-2022-22963"
+      ],
+      "family": "spring_rce"
+    },
+    {
+      "id": "vulhub.spring.CVE_2022_22965",
+      "platform": "Vulhub",
+      "name": "spring/CVE-2022-22965",
+      "expected_cves": [
+        "CVE-2022-22965"
+      ],
+      "family": "tomcat_put_upload"
+    },
+    {
+      "id": "vulhub.spring.CVE_2022_22978",
+      "platform": "Vulhub",
+      "name": "spring/CVE-2022-22978",
+      "expected_cves": [
+        "CVE-2022-22978"
+      ],
+      "family": "spring_rce"
+    },
+    {
+      "id": "vulhub.struts2.s2_032",
+      "platform": "Vulhub",
+      "name": "struts2/s2-032",
+      "expected_cves": [
+        "CVE-2016-3081"
+      ],
+      "family": "struts2_ognl"
+    },
+    {
+      "id": "vulhub.struts2.s2_045",
+      "platform": "Vulhub",
+      "name": "struts2/s2-045",
+      "expected_cves": [
+        "CVE-2017-5638"
+      ],
+      "family": "struts2_ognl"
+    },
+    {
+      "id": "vulhub.struts2.s2_046",
+      "platform": "Vulhub",
+      "name": "struts2/s2-046",
+      "expected_cves": [
+        "CVE-2017-5638"
+      ],
+      "family": "struts2_ognl"
+    },
+    {
+      "id": "vulhub.struts2.s2_057",
+      "platform": "Vulhub",
+      "name": "struts2/s2-057",
+      "expected_cves": [
+        "CVE-2018-11776"
+      ],
+      "family": "struts2_ognl"
+    },
+    {
+      "id": "vulhub.struts2.s2_059",
+      "platform": "Vulhub",
+      "name": "struts2/s2-059",
+      "expected_cves": [
+        "CVE-2018-11776",
+        "CVE-2019-0230"
+      ],
+      "family": "struts2_ognl"
+    },
+    {
+      "id": "vulhub.struts2.s2_061",
+      "platform": "Vulhub",
+      "name": "struts2/s2-061",
+      "expected_cves": [
+        "CVE-2020-17530"
+      ],
+      "family": "struts2_ognl"
+    },
+    {
+      "id": "vulhub.struts2.s2_066",
+      "platform": "Vulhub",
+      "name": "struts2/s2-066",
+      "expected_cves": [
+        "CVE-2023-50164"
+      ],
+      "family": "struts2_ognl"
+    },
+    {
+      "id": "vulhub.struts2.s2_067",
+      "platform": "Vulhub",
+      "name": "struts2/s2-067",
+      "expected_cves": [
+        "CVE-2024-53677"
+      ],
+      "family": "struts2_ognl"
+    },
+    {
+      "id": "vulhub.superset.CVE_2023_27524",
+      "platform": "Vulhub",
+      "name": "superset/CVE-2023-27524",
+      "expected_cves": [
+        "CVE-2023-27524",
+        "CVE-2023-37941"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.superset.CVE_2023_37941",
+      "platform": "Vulhub",
+      "name": "superset/CVE-2023-37941",
+      "expected_cves": [
+        "CVE-2023-27524",
+        "CVE-2023-37941"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.supervisor.CVE_2017_11610",
+      "platform": "Vulhub",
+      "name": "supervisor/CVE-2017-11610",
+      "expected_cves": [
+        "CVE-2017-11610"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.teamcity.CVE_2023_42793",
+      "platform": "Vulhub",
+      "name": "teamcity/CVE-2023-42793",
+      "expected_cves": [
+        "CVE-2023-42793"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.teamcity.CVE_2024_27198",
+      "platform": "Vulhub",
+      "name": "teamcity/CVE-2024-27198",
+      "expected_cves": [
+        "CVE-2024-27198",
+        "CVE-2024-27199"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.tikiwiki.CVE_2020_15906",
+      "platform": "Vulhub",
+      "name": "tikiwiki/CVE-2020-15906",
+      "expected_cves": [
+        "CVE-2020-15906",
+        "CVE-2021-26119"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.tomcat.CVE_2017_12615",
+      "platform": "Vulhub",
+      "name": "tomcat/CVE-2017-12615",
+      "expected_cves": [
+        "CVE-2017-12615"
+      ],
+      "family": "tomcat_put_upload"
+    },
+    {
+      "id": "vulhub.tomcat.CVE_2020_1938",
+      "platform": "Vulhub",
+      "name": "tomcat/CVE-2020-1938",
+      "expected_cves": [
+        "CVE-2020-1938"
+      ],
+      "family": "tomcat_put_upload"
+    },
+    {
+      "id": "vulhub.tomcat.CVE_2025_24813",
+      "platform": "Vulhub",
+      "name": "tomcat/CVE-2025-24813",
+      "expected_cves": [
+        "CVE-2025-24813"
+      ],
+      "family": "tomcat_put_upload"
+    },
+    {
+      "id": "vulhub.unomi.CVE_2020_13942",
+      "platform": "Vulhub",
+      "name": "unomi/CVE-2020-13942",
+      "expected_cves": [
+        "CVE-2020-13942"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.uwsgi.CVE_2018_7490",
+      "platform": "Vulhub",
+      "name": "uwsgi/CVE-2018-7490",
+      "expected_cves": [
+        "CVE-2018-7490"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.vite.CVE_2025_30208",
+      "platform": "Vulhub",
+      "name": "vite/CVE-2025-30208",
+      "expected_cves": [
+        "CVE-2025-30208"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.weblogic.CVE_2017_10271",
+      "platform": "Vulhub",
+      "name": "weblogic/CVE-2017-10271",
+      "expected_cves": [
+        "CVE-2017-10271"
+      ],
+      "family": "weblogic_t3_deserialization"
+    },
+    {
+      "id": "vulhub.weblogic.CVE_2018_2628",
+      "platform": "Vulhub",
+      "name": "weblogic/CVE-2018-2628",
+      "expected_cves": [
+        "CVE-2018-2628"
+      ],
+      "family": "weblogic_t3_deserialization"
+    },
+    {
+      "id": "vulhub.weblogic.CVE_2018_2894",
+      "platform": "Vulhub",
+      "name": "weblogic/CVE-2018-2894",
+      "expected_cves": [
+        "CVE-2018-2894"
+      ],
+      "family": "weblogic_t3_deserialization"
+    },
+    {
+      "id": "vulhub.weblogic.CVE_2020_14882",
+      "platform": "Vulhub",
+      "name": "weblogic/CVE-2020-14882",
+      "expected_cves": [
+        "CVE-2019-2725",
+        "CVE-2020-14882",
+        "CVE-2020-14883"
+      ],
+      "family": "spring_rce"
+    },
+    {
+      "id": "vulhub.weblogic.CVE_2023_21839",
+      "platform": "Vulhub",
+      "name": "weblogic/CVE-2023-21839",
+      "expected_cves": [
+        "CVE-2023-21839"
+      ],
+      "family": "weblogic_t3_deserialization"
+    },
+    {
+      "id": "vulhub.webmin.CVE_2019_15107",
+      "platform": "Vulhub",
+      "name": "webmin/CVE-2019-15107",
+      "expected_cves": [
+        "CVE-2019-15107"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.wordpress.pwnscriptum",
+      "platform": "Vulhub",
+      "name": "wordpress/pwnscriptum",
+      "expected_cves": [
+        "CVE-2016-10033"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.xstream.CVE_2021_21351",
+      "platform": "Vulhub",
+      "name": "xstream/CVE-2021-21351",
+      "expected_cves": [
+        "CVE-2021-21351"
+      ],
+      "family": "spring_rce"
+    },
+    {
+      "id": "vulhub.xstream.CVE_2021_29505",
+      "platform": "Vulhub",
+      "name": "xstream/CVE-2021-29505",
+      "expected_cves": [
+        "CVE-2021-29505"
+      ],
+      "family": "spring_rce"
+    },
+    {
+      "id": "vulhub.zabbix.CVE_2016_10134",
+      "platform": "Vulhub",
+      "name": "zabbix/CVE-2016-10134",
+      "expected_cves": [
+        "CVE-2016-10134"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.zabbix.CVE_2017_2824",
+      "platform": "Vulhub",
+      "name": "zabbix/CVE-2017-2824",
+      "expected_cves": [
+        "CVE-2017-2824"
+      ],
+      "family": "unknown"
+    },
+    {
+      "id": "vulhub.zabbix.CVE_2020_11800",
+      "platform": "Vulhub",
+      "name": "zabbix/CVE-2020-11800",
+      "expected_cves": [
+        "CVE-2017-2824",
+        "CVE-2020-11800"
+      ],
+      "family": "unknown"
+    }
+  ]
+}

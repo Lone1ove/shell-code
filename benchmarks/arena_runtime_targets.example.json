@@ -1,0 +1,12 @@
+﻿{
+  "targets": [
+    {
+      "id": "vulhub.struts2.s2_045",
+      "url": "http://127.0.0.1:8080"
+    },
+    {
+      "id": "vulhub.tomcat.cve_2017_12615",
+      "url": "http://127.0.0.1:8081"
+    }
+  ]
+}

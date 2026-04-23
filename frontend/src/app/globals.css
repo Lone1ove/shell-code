@@ -1,0 +1,127 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --card-background: #ffffff;
+  --card-border: #e5e7eb;
+  --accent: #06b6d4;
+  --accent-hover: #0891b2;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #e2e8f0;
+  --card-background: #1e293b;
+  --card-border: #334155;
+  --accent: #22d3ee;
+  --accent-hover: #06b6d4;
+  --success: #34d399;
+  --warning: #fbbf24;
+  --danger: #f87171;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card-bg: var(--card-background);
+  --color-card-border: var(--card-border);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+}
+
+body {
+  background: #f8fafc;
+  color: var(--foreground);
+  font-family: system-ui, -apple-system, sans-serif;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+body.dark {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-xl border border-gray-200 shadow-sm;
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+  .dark .card {
+    background-color: var(--card-background);
+    border-color: var(--card-border);
+  }
+
+  .btn-primary {
+    @apply bg-cyan-500 hover:bg-cyan-600 text-white font-medium py-3 px-6 rounded-lg
+           transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed
+           focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2
+           hover:shadow-lg hover:shadow-cyan-500/25;
+  }
+
+  .btn-cyan {
+    @apply bg-gradient-to-r from-cyan-500 to-sky-500 hover:from-cyan-600 hover:to-sky-600
+           text-white font-medium py-3 px-6 rounded-lg transition-all duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed
+           focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2
+           hover:shadow-lg hover:shadow-cyan-500/30;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2.5 border border-gray-300 rounded-lg
+           focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-0 focus:border-transparent
+           transition-all duration-200 placeholder:text-gray-400;
+    background-color: #ffffff;
+    color: #171717;
+  }
+  .dark .input-field {
+    background-color: #1e293b;
+    border-color: #475569;
+    color: #e2e8f0;
+  }
+  .dark .input-field:focus {
+    border-color: var(--accent);
+    /* ring-offset-0 保证 ring 不被父容器裁切 */
+  }
+  .dark .input-field::placeholder {
+    color: #64748b;
+  }
+
+  .dark header {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+  }
+  .dark header h1,
+  .dark header p {
+    color: #e2e8f0 !important;
+  }
+  .dark header .text-gray-500 {
+    color: #94a3b8 !important;
+  }
+
+  .dark footer {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #94a3b8 !important;
+  }
+
+  .dark .text-gray-900 {
+    color: #e2e8f0;
+  }
+  .dark .text-gray-700 {
+    color: #cbd5e1;
+  }
+  .dark .text-gray-500 {
+    color: #94a3b8;
+  }
+  .dark .bg-gray-50 {
+    background-color: #0f172a;
+  }
+}

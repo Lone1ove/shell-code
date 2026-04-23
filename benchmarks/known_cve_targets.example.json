@@ -1,0 +1,28 @@
+﻿{
+  "benchmark_name": "Known CVE Coverage Example",
+  "version": "2026-04-04",
+  "description": "Example benchmark. Copy to known_cve_targets.json and extend with your actual arena target list.",
+  "targets": [
+    {
+      "id": "vulhub.struts2.s2_045",
+      "platform": "Vulhub",
+      "name": "Struts2 S2-045",
+      "expected_cves": ["CVE-2017-5638"],
+      "family": "struts2_ognl"
+    },
+    {
+      "id": "vulhub.tomcat.cve_2017_12615",
+      "platform": "Vulhub",
+      "name": "Tomcat PUT JSP Upload",
+      "expected_cves": ["CVE-2017-12615"],
+      "family": "tomcat_put_upload"
+    },
+    {
+      "id": "vulhub.shiro.cve_2016_4437",
+      "platform": "Vulhub",
+      "name": "Shiro rememberMe",
+      "expected_cves": ["CVE-2016-4437"],
+      "family": "shiro_rememberme"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+
+> frontend@0.1.0 predev
+> node -e "require('fs').rmSync('.next',{recursive:true,force:true})"
+
+
+> frontend@0.1.0 dev
+> next dev --webpack
+
+▲ Next.js 16.2.3 (webpack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.100.1:3000
+✓ Ready in 772ms
+
+○ Compiling / ...
+ GET / 200 in 3.9s (next.js: 3.6s, application-code: 318ms)
+ GET / 200 in 81ms (next.js: 11ms, application-code: 70ms)
+ GET / 200 in 134ms (next.js: 75ms, application-code: 60ms)
+ GET /api/skills 200 in 1791ms (next.js: 1523ms, application-code: 268ms)
+ GET /api/skills 200 in 94ms (next.js: 3ms, application-code: 91ms)
+ GET /api/rag 200 in 955ms (next.js: 805ms, application-code: 150ms)
+ GET / 200 in 149ms (next.js: 70ms, application-code: 79ms)
+ GET /api/rag 200 in 23ms (next.js: 4ms, application-code: 20ms)
+ GET /api/tools 200 in 611ms (next.js: 598ms, application-code: 13ms)
+ GET /api/tools 200 in 11ms (next.js: 3ms, application-code: 8ms)
+ GET /api/cve?page=1&pageSize=20&search=&severity=&family= 200 in 589ms (next.js: 566ms, application-code: 22ms)
+ GET /api/cve?page=1&pageSize=20&search=&severity=&family= 200 in 16ms (next.js: 3ms, application-code: 14ms)

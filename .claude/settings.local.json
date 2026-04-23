@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "Bash(curl -s \"https://api.github.com/repos/tanweai/wooyun-legacy\")",
+      "Bash(curl -s \"https://api.github.com/repos/tanweai/wooyun-legacy/contents\")",
+      "Bash(curl -s \"https://api.github.com/repos/tanweai/wooyun-legacy/contents/categories\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('\\\\n'.join\\([f\\\\\"{x['name']}: {x['size']//1024}KB\\\\\" for x in d]\\)\\)\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/tanweai/wooyun-legacy/main/categories/xxe.md\")",
+      "Bash(.venv/Scripts/python -m shell_agent.rag.indexer)",
+      "Bash(python -m shell_agent.rag.indexer)",
+      "Bash(python -c ':*)",
+      "Bash(python main.py -t http://192.168.159.129)",
+      "Bash(pip install:*)",
+      "Bash(grep -i \"WooYun RAG\" \"D:\\\\Desktop\\\\yhy\\(2\\)\\\\yhy\\\\shell-agent\\\\logs\"/*.log)",
+      "WebSearch"
+    ]
+  }
+}

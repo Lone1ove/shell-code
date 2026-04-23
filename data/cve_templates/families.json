@@ -1,0 +1,740 @@
+[
+    {
+        "template_id":  "ssti_generic_family",
+        "family":  "ssti_generic",
+        "vuln_type":  "ssti",
+        "products":  [
+                         "flask",
+                         "jinja2",
+                         "twig",
+                         "django",
+                         "freemarker",
+                         "velocity"
+                     ],
+        "protocols":  [
+                          "http"
+                      ],
+        "preconditions":  [
+                              "template_render_with_user_input"
+                          ],
+        "fingerprint_keywords":  [
+                                     "ssti",
+                                     "template injection",
+                                     "jinja",
+                                     "jinja2",
+                                     "twig",
+                                     "{{7*7}}",
+                                     "54289",
+                                     "hello 49"
+                                 ],
+        "default_probe":  "Send deterministic template expressions (for example {{7*7}}) and verify server-side evaluation in response.",
+        "confirm_markers":  [
+                                "ssti",
+                                "template injection",
+                                "jinja",
+                                "jinja2",
+                                "hello 49",
+                                "54289",
+                                "confirmed",
+                                "vulnerable"
+                            ],
+        "false_positive_markers":  [
+                                       "not vulnerable",
+                                       "escaped output",
+                                       "sanitized",
+                                       "vulnerable: false",
+                                       "未发现漏洞"
+                                   ],
+        "remediation":  [
+                            "禁止将用户输入直接拼接到模板表达式中，统一使用安全变量绑定。",
+                            "启用模板引擎沙箱并禁用危险对象访问和动态表达式执行能力。",
+                            "最小化模板上下文暴露，避免泄露 config/request 等敏感对象。"
+                        ]
+    },
+    {
+        "template_id":  "struts2_ognl_family",
+        "family":  "struts2_ognl",
+        "vuln_type":  "rce",
+        "products":  [
+                         "struts2"
+                     ],
+        "protocols":  [
+                          "http"
+                      ],
+        "preconditions":  [
+                              "web_access",
+                              "ognl_expression_path"
+                          ],
+        "fingerprint_keywords":  [
+                                     "struts2",
+                                     "ognl",
+                                     "s2-045",
+                                     "s2-057",
+                                     "doUpload.action"
+                                 ],
+        "default_probe":  "Inject OGNL payload in Content-Type or URL parameters and verify command execution markers.",
+        "confirm_markers":  [
+                                "vulnerable",
+                                "ognl",
+                                "uid=",
+                                "whoami",
+                                "command executed"
+                            ],
+        "false_positive_markers":  [
+                                       "connection refused",
+                                       "timeout",
+                                       "404 not found",
+                                       "blocked by waf"
+                                   ],
+        "remediation":  [
+                            "Upgrade Struts2 to patched versions and disable unsafe OGNL evaluation paths.",
+                            "Apply strict request validation and WAF rules for OGNL payload patterns."
+                        ]
+    },
+    {
+        "template_id":  "tomcat_put_upload_family",
+        "family":  "tomcat_put_upload",
+        "vuln_type":  "rce",
+        "products":  [
+                         "tomcat"
+                     ],
+        "protocols":  [
+                          "http"
+                      ],
+        "preconditions":  [
+                              "http_put_enabled",
+                              "writable_webroot"
+                          ],
+        "fingerprint_keywords":  [
+                                     "tomcat",
+                                     "put",
+                                     "jsp",
+                                     "cve-2017-12615"
+                                 ],
+        "default_probe":  "Attempt HTTP PUT upload of JSP and verify execution.",
+        "confirm_markers":  [
+                                "201 created",
+                                "put success",
+                                "jsp",
+                                "webshell",
+                                "uid="
+                            ],
+        "false_positive_markers":  [
+                                       "405 method not allowed",
+                                       "403 forbidden"
+                                   ],
+        "remediation":  [
+                            "Disable unsafe HTTP methods such as PUT/DELETE unless absolutely required.",
+                            "Patch Tomcat and enforce immutable deployment paths with least privilege."
+                        ]
+    },
+    {
+        "template_id":  "shiro_rememberme_family",
+        "family":  "shiro_rememberme",
+        "vuln_type":  "rce",
+        "products":  [
+                         "shiro"
+                     ],
+        "protocols":  [
+                          "http"
+                      ],
+        "preconditions":  [
+                              "rememberMe_cookie",
+                              "gadget_chain_available"
+                          ],
+        "fingerprint_keywords":  [
+                                     "shiro",
+                                     "rememberme",
+                                     "cve-2016-4437"
+                                 ],
+        "default_probe":  "Probe rememberMe behavior and test deserialization path.",
+        "confirm_markers":  [
+                                "rememberme=deleteme",
+                                "deserialization",
+                                "gadget",
+                                "vulnerable"
+                            ],
+        "false_positive_markers":  [
+                                       "invalid rememberme",
+                                       "no rememberme"
+                                   ],
+        "remediation":  [
+                            "Upgrade Apache Shiro and rotate encryption keys.",
+                            "Disable rememberMe where unnecessary and harden deserialization controls."
+                        ]
+    },
+    {
+        "template_id":  "fastjson_deser_family",
+        "family":  "fastjson_deserialization",
+        "vuln_type":  "rce",
+        "products":  [
+                         "fastjson"
+                     ],
+        "protocols":  [
+                          "http",
+                          "tcp"
+                      ],
+        "preconditions":  [
+                              "autotype_enabled",
+                              "deserialization_path"
+                          ],
+        "fingerprint_keywords":  [
+                                     "fastjson",
+                                     "autotype",
+                                     "jndi",
+                                     "ldap",
+                                     "rmi"
+                                 ],
+        "default_probe":  "Send AutoType payload and verify gadget side effects.",
+        "confirm_markers":  [
+                                "autotype",
+                                "ldap",
+                                "rmi",
+                                "jndi",
+                                "vulnerable"
+                            ],
+        "false_positive_markers":  [
+                                       "autotype is not support",
+                                       "invalid json"
+                                   ],
+        "remediation":  [
+                            "Upgrade fastjson and disable AutoType in production.",
+                            "Restrict outbound LDAP/RMI/JNDI and validate deserialization inputs."
+                        ]
+    },
+    {
+        "template_id":  "spring4shell_family",
+        "family":  "spring_rce",
+        "vuln_type":  "rce",
+        "products":  [
+                         "spring",
+                         "springmvc"
+                     ],
+        "protocols":  [
+                          "http"
+                      ],
+        "preconditions":  [
+                              "spring_core_vulnerable_version",
+                              "data_binder_path"
+                          ],
+        "fingerprint_keywords":  [
+                                     "spring4shell",
+                                     "cve-2022-22965",
+                                     "class.module.classloader"
+                                 ],
+        "default_probe":  "Send Spring4Shell crafted parameters and observe webshell/dropper evidence.",
+        "confirm_markers":  [
+                                "class.module.classloader",
+                                "tomcatwar",
+                                "webshell",
+                                "vulnerable"
+                            ],
+        "false_positive_markers":  [
+                                       "400 bad request",
+                                       "blocked"
+                                   ],
+        "remediation":  [
+                            "Upgrade Spring Framework to patched versions.",
+                            "Apply strict binding allowlist and restrict vulnerable deployment patterns."
+                        ]
+    },
+    {
+        "template_id":  "log4shell_family",
+        "family":  "log4j_jndi",
+        "vuln_type":  "rce",
+        "products":  [
+                         "log4j",
+                         "java"
+                     ],
+        "protocols":  [
+                          "http",
+                          "tcp"
+                      ],
+        "preconditions":  [
+                              "log4j_vulnerable_version",
+                              "jndi_lookup_enabled"
+                          ],
+        "fingerprint_keywords":  [
+                                     "log4shell",
+                                     "cve-2021-44228",
+                                     "${jndi:"
+                                 ],
+        "default_probe":  "Inject JNDI payload and validate DNS/LDAP callback side channel.",
+        "confirm_markers":  [
+                                "jndi",
+                                "ldap",
+                                "dnslog",
+                                "callback",
+                                "vulnerable"
+                            ],
+        "false_positive_markers":  [
+                                       "jndi disabled",
+                                       "lookup blocked"
+                                   ],
+        "remediation":  [
+                            "Upgrade Log4j to patched version and remove JndiLookup class.",
+                            "Limit outbound network egress and monitor suspicious lookup behavior."
+                        ]
+    },
+    {
+        "template_id":  "confluence_ognl_family",
+        "family":  "confluence_ognl",
+        "vuln_type":  "rce",
+        "products":  [
+                         "confluence"
+                     ],
+        "protocols":  [
+                          "http"
+                      ],
+        "preconditions":  [
+                              "public_endpoint_access"
+                          ],
+        "fingerprint_keywords":  [
+                                     "confluence",
+                                     "ognl",
+                                     "cve-2022-26134"
+                                 ],
+        "default_probe":  "Inject OGNL expression in vulnerable Confluence path and verify execution.",
+        "confirm_markers":  [
+                                "confluence",
+                                "ognl",
+                                "uid=",
+                                "vulnerable"
+                            ],
+        "false_positive_markers":  [
+                                       "permission denied",
+                                       "not found"
+                                   ],
+        "remediation":  [
+                            "Upgrade Confluence to fixed versions.",
+                            "Restrict external access and deploy temporary vendor mitigations."
+                        ]
+    },
+    {
+        "template_id":  "exchange_proxylogon_family",
+        "family":  "exchange_proxylogon",
+        "vuln_type":  "rce",
+        "products":  [
+                         "exchange"
+                     ],
+        "protocols":  [
+                          "http"
+                      ],
+        "preconditions":  [
+                              "owa_ecp_exposed"
+                          ],
+        "fingerprint_keywords":  [
+                                     "proxylogon",
+                                     "cve-2021-26855",
+                                     "x-beresource"
+                                 ],
+        "default_probe":  "Validate SSRF + auth bypass chain in Exchange endpoints.",
+        "confirm_markers":  [
+                                "x-beresource",
+                                "ecp",
+                                "owa",
+                                "vulnerable"
+                            ],
+        "false_positive_markers":  [
+                                       "401 unauthorized",
+                                       "forbidden"
+                                   ],
+        "remediation":  [
+                            "Apply latest Exchange security updates.",
+                            "Limit exposure of ECP/OWA interfaces and enforce segmented access control."
+                        ]
+    },
+    {
+        "template_id":  "apache_path_traversal_family",
+        "family":  "apache_traversal",
+        "vuln_type":  "file_inclusion",
+        "products":  [
+                         "apache",
+                         "httpd"
+                     ],
+        "protocols":  [
+                          "http"
+                      ],
+        "preconditions":  [
+                              "vulnerable_alias_or_path_normalization"
+                          ],
+        "fingerprint_keywords":  [
+                                     "apache",
+                                     "path traversal",
+                                     "cve-2021-41773",
+                                     "..%2f"
+                                 ],
+        "default_probe":  "Probe traversal payload and validate sensitive file disclosure.",
+        "confirm_markers":  [
+                                "/etc/passwd",
+                                "root:x:",
+                                "path traversal",
+                                "vulnerable"
+                            ],
+        "false_positive_markers":  [
+                                       "403 forbidden",
+                                       "not found"
+                                   ],
+        "remediation":  [
+                            "Upgrade Apache HTTP Server to fixed releases.",
+                            "Disable risky alias mapping and enforce canonical path checks."
+                        ]
+    },
+    {
+        "template_id":  "phpunit_rce_family",
+        "family":  "phpunit_eval_rce",
+        "vuln_type":  "rce",
+        "products":  [
+                         "phpunit",
+                         "php"
+                     ],
+        "protocols":  [
+                          "http"
+                      ],
+        "preconditions":  [
+                              "exposed_test_endpoint"
+                          ],
+        "fingerprint_keywords":  [
+                                     "phpunit",
+                                     "eval-stdin.php",
+                                     "cve-2017-9841"
+                                 ],
+        "default_probe":  "Access exposed eval-stdin endpoint and execute minimal command.",
+        "confirm_markers":  [
+                                "eval-stdin.php",
+                                "phpunit",
+                                "uid=",
+                                "vulnerable"
+                            ],
+        "false_positive_markers":  [
+                                       "404",
+                                       "disabled"
+                                   ],
+        "remediation":  [
+                            "Remove test artifacts from production deployment.",
+                            "Upgrade dependencies and enforce build-time artifact pruning."
+                        ]
+    },
+    {
+        "template_id":  "drupalgeddon2_family",
+        "family":  "drupal_rce",
+        "vuln_type":  "rce",
+        "products":  [
+                         "drupal"
+                     ],
+        "protocols":  [
+                          "http"
+                      ],
+        "preconditions":  [
+                              "vulnerable_drupal_version"
+                          ],
+        "fingerprint_keywords":  [
+                                     "drupalgeddon",
+                                     "cve-2018-7600",
+                                     "drupal"
+                                 ],
+        "default_probe":  "Send Drupal form API payload and verify command execution.",
+        "confirm_markers":  [
+                                "drupal",
+                                "form_id",
+                                "uid=",
+                                "vulnerable"
+                            ],
+        "false_positive_markers":  [
+                                       "invalid form",
+                                       "forbidden"
+                                   ],
+        "remediation":  [
+                            "Upgrade Drupal core immediately to patched versions.",
+                            "Restrict public exposure and apply vendor mitigation guidance."
+                        ]
+    },
+    {
+        "template_id":  "joomla_sqli_family",
+        "family":  "joomla_sqli",
+        "vuln_type":  "sql_injection",
+        "products":  [
+                         "joomla"
+                     ],
+        "protocols":  [
+                          "http"
+                      ],
+        "preconditions":  [
+                              "vulnerable_component_path"
+                          ],
+        "fingerprint_keywords":  [
+                                     "joomla",
+                                     "sqli",
+                                     "cve-2015-7297"
+                                 ],
+        "default_probe":  "Inject boolean/time-based SQL payload into vulnerable Joomla parameter.",
+        "confirm_markers":  [
+                                "sql syntax",
+                                "database error",
+                                "sleep(",
+                                "vulnerable"
+                            ],
+        "false_positive_markers":  [
+                                       "waf blocked",
+                                       "invalid token"
+                                   ],
+        "remediation":  [
+                            "Upgrade Joomla and vulnerable extensions to secure versions.",
+                            "Use parameterized queries and strict input validation."
+                        ]
+    },
+    {
+        "template_id":  "wordpress_file_upload_family",
+        "family":  "wordpress_plugin_upload",
+        "vuln_type":  "rce",
+        "products":  [
+                         "wordpress"
+                     ],
+        "protocols":  [
+                          "http"
+                      ],
+        "preconditions":  [
+                              "vulnerable_plugin",
+                              "upload_path_exposed"
+                          ],
+        "fingerprint_keywords":  [
+                                     "wordpress",
+                                     "plugin",
+                                     "upload",
+                                     "webshell",
+                                     "cve-"
+                                 ],
+        "default_probe":  "Abuse vulnerable plugin upload endpoint and test execution.",
+        "confirm_markers":  [
+                                "wp-content/uploads",
+                                "php",
+                                "shell",
+                                "vulnerable"
+                            ],
+        "false_positive_markers":  [
+                                       "nonce check failed",
+                                       "forbidden"
+                                   ],
+        "remediation":  [
+                            "Patch or remove vulnerable plugins/themes.",
+                            "Restrict upload execution and monitor integrity of upload directories."
+                        ]
+    },
+    {
+        "template_id":  "jenkins_rce_family",
+        "family":  "jenkins_rce",
+        "vuln_type":  "rce",
+        "products":  [
+                         "jenkins"
+                     ],
+        "protocols":  [
+                          "http"
+                      ],
+        "preconditions":  [
+                              "script_console_exposed_or_bypass"
+                          ],
+        "fingerprint_keywords":  [
+                                     "jenkins",
+                                     "script console",
+                                     "groovy",
+                                     "cve-"
+                                 ],
+        "default_probe":  "Probe Jenkins script execution vectors and verify controlled command output.",
+        "confirm_markers":  [
+                                "jenkins",
+                                "groovy",
+                                "script",
+                                "uid=",
+                                "vulnerable"
+                            ],
+        "false_positive_markers":  [
+                                       "permission denied",
+                                       "crumb required"
+                                   ],
+        "remediation":  [
+                            "Disable anonymous access and harden script execution permissions.",
+                            "Upgrade Jenkins core/plugins and enforce network access controls."
+                        ]
+    },
+    {
+        "template_id":  "redis_unauth_family",
+        "family":  "redis_unauthorized",
+        "vuln_type":  "auth_bypass",
+        "products":  [
+                         "redis"
+                     ],
+        "protocols":  [
+                          "tcp"
+                      ],
+        "preconditions":  [
+                              "redis_exposed",
+                              "no_auth"
+                          ],
+        "fingerprint_keywords":  [
+                                     "redis",
+                                     "unauthorized",
+                                     "config set",
+                                     "slaveof"
+                                 ],
+        "default_probe":  "Check unauthenticated Redis commands and dangerous configuration capability.",
+        "confirm_markers":  [
+                                "+pong",
+                                "config set",
+                                "unauthorized",
+                                "vulnerable"
+                            ],
+        "false_positive_markers":  [
+                                       "-noauth authentication required"
+                                   ],
+        "remediation":  [
+                            "Bind Redis to trusted interfaces and enable strong authentication.",
+                            "Disable high-risk commands and apply firewall segmentation."
+                        ]
+    },
+    {
+        "template_id":  "elasticsearch_unauth_family",
+        "family":  "elasticsearch_unauthorized",
+        "vuln_type":  "auth_bypass",
+        "products":  [
+                         "elasticsearch"
+                     ],
+        "protocols":  [
+                          "http"
+                      ],
+        "preconditions":  [
+                              "public_cluster_access",
+                              "no_auth"
+                          ],
+        "fingerprint_keywords":  [
+                                     "elasticsearch",
+                                     "cluster",
+                                     "_cat",
+                                     "unauthorized access"
+                                 ],
+        "default_probe":  "Probe public Elasticsearch endpoints for unauthenticated data access.",
+        "confirm_markers":  [
+                                "cluster_name",
+                                "_cat",
+                                "hits",
+                                "vulnerable"
+                            ],
+        "false_positive_markers":  [
+                                       "security_exception",
+                                       "401 unauthorized"
+                                   ],
+        "remediation":  [
+                            "Enable authentication/authorization and TLS for Elasticsearch.",
+                            "Restrict external access and apply least-privilege index permissions."
+                        ]
+    },
+    {
+        "template_id":  "jboss_deserialize_family",
+        "family":  "jboss_deserialization",
+        "vuln_type":  "rce",
+        "products":  [
+                         "jboss",
+                         "wildfly"
+                     ],
+        "protocols":  [
+                          "http",
+                          "tcp"
+                      ],
+        "preconditions":  [
+                              "serialization_endpoint_exposed"
+                          ],
+        "fingerprint_keywords":  [
+                                     "jboss",
+                                     "invoker",
+                                     "deserialization",
+                                     "cve-2017-12149"
+                                 ],
+        "default_probe":  "Send controlled serialized payload and validate execution side effects.",
+        "confirm_markers":  [
+                                "deserialization",
+                                "invoker",
+                                "uid=",
+                                "vulnerable"
+                            ],
+        "false_positive_markers":  [
+                                       "classnotfound",
+                                       "invalid stream"
+                                   ],
+        "remediation":  [
+                            "Upgrade JBoss/WildFly and disable unsafe invoker endpoints.",
+                            "Filter serialized classes and isolate untrusted deserialization flows."
+                        ]
+    },
+    {
+        "template_id":  "weblogic_t3_family",
+        "family":  "weblogic_t3_deserialization",
+        "vuln_type":  "rce",
+        "products":  [
+                         "weblogic"
+                     ],
+        "protocols":  [
+                          "tcp",
+                          "http"
+                      ],
+        "preconditions":  [
+                              "t3_exposed",
+                              "deserialization_path"
+                          ],
+        "fingerprint_keywords":  [
+                                     "weblogic",
+                                     "t3",
+                                     "cve-2017-10271",
+                                     "cve-2018-2894"
+                                 ],
+        "default_probe":  "Probe WebLogic T3/WS endpoints with safe deserialization checks.",
+        "confirm_markers":  [
+                                "weblogic",
+                                "t3",
+                                "deserialize",
+                                "vulnerable"
+                            ],
+        "false_positive_markers":  [
+                                       "connection reset",
+                                       "forbidden"
+                                   ],
+        "remediation":  [
+                            "Patch WebLogic to latest PSU and disable unused T3 exposure.",
+                            "Apply network ACL and runtime exploit detection controls."
+                        ]
+    },
+    {
+        "template_id":  "kibana_cve_family",
+        "family":  "kibana_rce_or_xss",
+        "vuln_type":  "xss",
+        "products":  [
+                         "kibana"
+                     ],
+        "protocols":  [
+                          "http"
+                      ],
+        "preconditions":  [
+                              "kibana_exposed",
+                              "vulnerable_version"
+                          ],
+        "fingerprint_keywords":  [
+                                     "kibana",
+                                     "timelion",
+                                     "cve-",
+                                     "xss"
+                                 ],
+        "default_probe":  "Probe known Kibana vulnerable endpoints and verify controlled payload reflection.",
+        "confirm_markers":  [
+                                "kibana",
+                                "payload reflected",
+                                "xss",
+                                "vulnerable"
+                            ],
+        "false_positive_markers":  [
+                                       "sanitized",
+                                       "escaped"
+                                   ],
+        "remediation":  [
+                            "Upgrade Kibana to patched version.",
+                            "Enable strict CSP and harden public exposure of management interfaces."
+                        ]
+    }
+]
